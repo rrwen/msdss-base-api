@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>msdss-base-api &mdash; msdss_base_api 0.0.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="_static/jupyter-sphinx.css" type="text/css" />
+      <link rel="stylesheet" href="_static/thebelab.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/thebelab-helper.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="#" class="icon icon-home"> msdss_base_api
+          </a>
+              <div class="version">
+                0.0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">msdss-base-api</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">msdss_base_api</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
+      <li>msdss-base-api</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="msdss-base-api">
+<h1>msdss-base-api<a class="headerlink" href="#msdss-base-api" title="Permalink to this headline"></a></h1>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.github.com/rrwen/msdss-base-api">Github</a></p></li>
+<li><p><a class="reference external" href="https://github.com/rrwen/msdss-base-api/blob/master/LICENSE">License</a></p></li>
+</ul>
+<p>Base API for the Modular Spatial Decision Support Systems (MSDSS) framework.</p>
+<section id="install">
+<h2>Install<a class="headerlink" href="#install" title="Permalink to this headline"></a></h2>
+<ol class="arabic simple">
+<li><p>Install <a class="reference external" href="https://www.anaconda.com/">Anaconda 3</a> for Python</p></li>
+<li><p>Install <code class="docutils literal notranslate"><span class="pre">msdss_base_api</span></code> via pip or through a conda environment</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="n">msdss_base_api</span> <span class="n">python</span><span class="o">=</span><span class="mf">3.7</span>
+<span class="n">conda</span> <span class="n">activate</span> <span class="n">msdss_base_api</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">git</span><span class="o">+</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">rrwen</span><span class="o">/</span><span class="n">msdss_base_api</span>
+</pre></div>
+</div>
+</section>
+<section id="quick-start">
+<h2>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this headline"></a></h2>
+<p>Use in Python:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">msdss_base_api</span> <span class="kn">import</span> <span class="n">API</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">API</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="how-it-works">
+<h2>How it Works<a class="headerlink" href="#how-it-works" title="Permalink to this headline"></a></h2>
+<p>The base API wraps around <a class="reference external" href="https://fastapi.tiangolo.com/">FastAPI</a> to define routes and logic, while <a class="reference external" href="https://www.uvicorn.org/">Uvicorn</a> is used to serve programmed APIs.</p>
+<div class="graphviz"><img src="_images/graphviz-275f7935255c2d741cd78376c4730fb3678ceecc.png" alt="digraph methods {
+rankdir=LR;
+api[label=&quot;FastAPI&quot; URL=&quot;https://fastapi.tiangolo.com/&quot;];
+server[label=&quot;Uvicorn&quot; URL=&quot;https://www.uvicorn.org/&quot;];
+
+subgraph cluster {
+    api -&gt; server;
+    label=&quot;msdss-base-api&quot;;
+}
+}" usemap="#methods" class="graphviz" /></div>
+<map id="methods" name="methods">
+<area shape="poly" id="node1" href="https://fastapi.tiangolo.com/" title="FastAPI" alt="" coords="134,81,131,74,124,67,112,62,97,59,80,57,64,59,49,62,37,67,29,74,27,81,29,89,37,95,49,101,64,104,80,105,97,104,112,101,124,95,131,89"/>
+<area shape="poly" id="node2" href="https://www.uvicorn.org/" title="Uvicorn" alt="" coords="290,81,287,74,279,67,267,62,252,59,236,57,219,59,204,62,192,67,185,74,182,81,185,89,192,95,204,101,219,104,236,105,252,104,267,101,279,95,287,89"/>
+</map></section>
+<section id="contact">
+<h2>Contact<a class="headerlink" href="#contact" title="Permalink to this headline"></a></h2>
+<p>Richard Wen <a class="reference external" href="mailto:rrwen&#46;dev&#37;&#52;&#48;gmail&#46;com">rrwen<span>&#46;</span>dev<span>&#64;</span>gmail<span>&#46;</span>com</a></p>
+</section>
+<section id="contents">
+<h2>Contents<a class="headerlink" href="#contents" title="Permalink to this headline"></a></h2>
+<div class="toctree-wrapper compound">
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">msdss-base-api</a></li>
+</ul>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Richard Wen.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

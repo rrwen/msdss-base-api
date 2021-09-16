@@ -7,51 +7,93 @@ rrwen.dev@gmail.com
 
 Setup and install a development environment:
 
-1. Install [Anaconda Python 3](https://www.anaconda.com/)
-2. Clone this repository `git clone`
-3. Move into the cloned folder `cd`
-4. Create a virtual environment for development `conda env create`
+1. Install [git](https://git-scm.com/)
+2. Install [Anaconda Python 3](https://www.anaconda.com/distribution/)
+3. Install [GraphViz](https://www.graphviz.org/)
+4. Clone this repository `git clone`
+5. Move to the cloned folder `cd msdss-base-api`
+6. Pull and download package datasets `git lfs pull`
+7. Install python dependencies with `bin\install.bat` or `bin/install.sh`
 
-```bash
-git clone https://github.com/rrwen/msdss-base-api
+In Mac OS (with [Homebrew](https://brew.sh/) installed):
+
+```
+brew install git graphviz -y
+git clone https://www.github.com/rrwen/msdss-base-api
 cd msdss-base-api
-conda env create -f environment.yml
+chmod +x bin/install.sh
+source bin/install.sh
 ```
 
-For Mac OSX/Linux users, `sudo` may be used to create the virtual environment:
+In Linux (Ubuntu):
 
-```bash
-git clone https://github.com/rrwen/msdss-base-api
+```
+apt install git git-lfs graphviz -y
+git clone https://www.github.com/rrwen/msdss-base-api
 cd msdss-base-api
-sudo conda env create -f environment.yml
+git lfs pull
+chmod +x bin/install.sh
+source bin/install.sh
 ```
 
-## Recreating the Virtual Environment
-
-To recreate the virtual environment (when (environment.yml)[environment.yml] is changed):
-
-1. Remove the virtual environment `conda remove`
-2. Recreate the virtual environment `conda create`
+In Windows (with [Chocolatey](https://chocolatey.org/) installed):
 
 ```
-conda remove -y --name msdss-base-api --all
-conda env create -f environment.yml
+choco install git git-lfs graphviz -y
+git clone https://www.github.com/rrwen/msdss-base-api
+cd msdss-base-api
+git lfs pull
+bin\install
 ```
 
-## Local Package Install
+# Environment
 
-Install the package locally for testing:
-s
-1. Activate virtual environment `conda activate`
-2. Build distribution files in the *dist/* folder `python -m build`
-3. Remove existing installations `pip uninstall`
-4. Install locally using distribution files `pip install`
+A [conda environment](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-with-commands) will also be created with `bin/install`, which installs the environment defined by `env.yml`.
 
-```bash
-conda activate msdss-base-api
-python -m build
-pip uninstall msdss-base-api
-pip install dist/msdss-base-api-<VERSION>.tar.gz
+If you are opening a new terminal, you will need to use `bin/activate` to activate environment.
+
+In Linux/Mac OS:
+
+```
+source bin/activate.sh
 ```
 
-**Note**: Replace `<VERSION>` with the version seen in the *dist/* folder.
+In Windows:
+
+```
+bin\activate
+```
+
+**Note**: The environment exists inside the `env/` folder.
+
+## Documentation
+
+The documentation is automatically built with [sphinx](http://www.sphinx-doc.org/en/master/).
+
+You can build the documentation files into the `docs` folder by running `bin/build_docs`.
+
+In Linux/Mac OS:
+
+```
+source bin/build_docs.sh
+```
+
+In Windows:
+
+```
+bin\build_docs
+```
+
+You can also completely rebuild the docs (reinstalling the package, and removing existing documentation) with `bin/rebuild_docs`.
+
+In Linux/Mac OS:
+
+```
+source bin/rebuild_docs.sh
+```
+
+In Windows:
+
+```
+bin\rebuild_docs
+```
