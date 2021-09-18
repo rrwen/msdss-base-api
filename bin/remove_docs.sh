@@ -1,2 +1,2 @@
-find ./docs -mindepth 1 ! -regex '^./docs/source\(/.*\)?' -delete
+find ./docs -mindepth 1 -not -path './docs/source*'
 rm -rf jupyter_execute

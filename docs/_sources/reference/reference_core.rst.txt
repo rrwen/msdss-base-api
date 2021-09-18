@@ -1,0 +1,5 @@
+core Module
+-----------
+
+.. automodule:: msdss_base_api.core
+    :members:

@@ -23,7 +23,8 @@
         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="API Reference" href="reference.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -46,6 +47,10 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">msdss-base-api</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#api-class">API Class</a></li>
+</ul>
+</li>
 </ul>
 
         </div>
@@ -83,33 +88,47 @@
 <h2>Install<a class="headerlink" href="#install" title="Permalink to this headline"></a></h2>
 <ol class="arabic simple">
 <li><p>Install <a class="reference external" href="https://www.anaconda.com/">Anaconda 3</a> for Python</p></li>
-<li><p>Install <code class="docutils literal notranslate"><span class="pre">msdss_base_api</span></code> via pip or through a conda environment</p></li>
+<li><p>Install <code class="docutils literal notranslate"><span class="pre">msdss-base-api</span></code> via pip or through a conda environment</p></li>
 </ol>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="n">msdss_base_api</span> <span class="n">python</span><span class="o">=</span><span class="mf">3.7</span>
-<span class="n">conda</span> <span class="n">activate</span> <span class="n">msdss_base_api</span>
-<span class="n">pip</span> <span class="n">install</span> <span class="n">git</span><span class="o">+</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">rrwen</span><span class="o">/</span><span class="n">msdss_base_api</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="n">msdss</span><span class="o">-</span><span class="n">base</span><span class="o">-</span><span class="n">api</span> <span class="n">python</span><span class="o">=</span><span class="mf">3.7</span>
+<span class="n">conda</span> <span class="n">activate</span> <span class="n">msdss</span><span class="o">-</span><span class="n">base</span><span class="o">-</span><span class="n">api</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">msdss</span><span class="o">-</span><span class="n">base</span><span class="o">-</span><span class="n">api</span>
 </pre></div>
 </div>
 </section>
 <section id="quick-start">
 <h2>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this headline"></a></h2>
-<p>Use in Python:</p>
+<p>After installing the package, use in Python:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">msdss_base_api</span> <span class="kn">import</span> <span class="n">API</span>
 <span class="n">app</span> <span class="o">=</span> <span class="n">API</span><span class="p">()</span>
+
+<span class="c1"># Add via function</span>
+<span class="k">def</span> <span class="nf">hello_world</span><span class="p">():</span>
+   <span class="k">return</span> <span class="s2">&quot;hello world!&quot;</span>
+<span class="n">app</span><span class="o">.</span><span class="n">add_route</span><span class="p">(</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="n">hello_world</span><span class="p">)</span>
+
+<span class="c1"># Add via decorator</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;/two&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">hello_world2</span><span class="p">():</span>
+   <span class="k">return</span> <span class="s2">&quot;hello world 2!&quot;</span>
+
+<span class="c1"># Run the app</span>
+<span class="c1"># Visit http://localhost:8000 on your browser</span>
+<span class="n">app</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 </pre></div>
 </div>
 </section>
 <section id="how-it-works">
 <h2>How it Works<a class="headerlink" href="#how-it-works" title="Permalink to this headline"></a></h2>
 <p>The base API wraps around <a class="reference external" href="https://fastapi.tiangolo.com/">FastAPI</a> to define routes and logic, while <a class="reference external" href="https://www.uvicorn.org/">Uvicorn</a> is used to serve programmed APIs.</p>
-<div class="graphviz"><img src="_images/graphviz-275f7935255c2d741cd78376c4730fb3678ceecc.png" alt="digraph methods {
+<div class="graphviz"><img src="_images/graphviz-a169c93f4951e40c5c18f623e238bdf5c5e73da9.png" alt="digraph methods {
 rankdir=LR;
 api[label=&quot;FastAPI&quot; URL=&quot;https://fastapi.tiangolo.com/&quot;];
 server[label=&quot;Uvicorn&quot; URL=&quot;https://www.uvicorn.org/&quot;];
 
 subgraph cluster {
-    api -&gt; server;
-    label=&quot;msdss-base-api&quot;;
+   api -&gt; server;
+   label=&quot;msdss-base-api&quot;;
 }
 }" usemap="#methods" class="graphviz" /></div>
 <map id="methods" name="methods">
@@ -118,14 +137,8 @@ subgraph cluster {
 </map></section>
 <section id="contact">
 <h2>Contact<a class="headerlink" href="#contact" title="Permalink to this headline"></a></h2>
-<p>Richard Wen <a class="reference external" href="mailto:rrwen&#46;dev&#37;&#52;&#48;gmail&#46;com">rrwen<span>&#46;</span>dev<span>&#64;</span>gmail<span>&#46;</span>com</a></p>
-</section>
-<section id="contents">
-<h2>Contents<a class="headerlink" href="#contents" title="Permalink to this headline"></a></h2>
+<p>Richard Wen &lt;<a class="reference external" href="mailto:rrwen&#46;dev&#37;&#52;&#48;gmail&#46;com">rrwen<span>&#46;</span>dev<span>&#64;</span>gmail<span>&#46;</span>com</a>&gt;</p>
 <div class="toctree-wrapper compound">
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">msdss-base-api</a></li>
-</ul>
 </div>
 </section>
 </section>
@@ -133,7 +146,9 @@ subgraph cluster {
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="reference.html" class="btn btn-neutral float-right" title="API Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 
