@@ -1,9 +1,9 @@
 # msdss-base-api
 
-* [Documentation](https://rrwen.github.io/msdss-base-api/)
-* [Developer Notes](DEVELOPER.md)
-
 Base API for the Modular Spatial Decision Support Systems (MSDSS) framework.
+
+* :book: [Documentation](https://rrwen.github.io/msdss-base-api/)
+* :notebook: [Developer Notes](DEVELOPER.md)
 
 ## Contact
 
