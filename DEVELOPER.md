@@ -46,7 +46,7 @@ git lfs pull
 bin\install
 ```
 
-# Virtual Environment
+## Virtual Python Environment
 
 A [conda environment](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-with-commands) will also be created with `bin/install`, which installs the environment defined by `env.yml`.
 
@@ -70,6 +70,8 @@ bin\activate
 
 The documentation is automatically built with [sphinx](http://www.sphinx-doc.org/en/master/).
 
+### Building the documentation
+
 You can build the documentation files into the `docs` folder by running `bin/build_docs`.
 
 In Linux/Mac OS:
@@ -83,6 +85,8 @@ In Windows:
 ```
 bin\build_docs
 ```
+
+### Rebuilding the documentation
 
 You can also completely rebuild the docs (reinstalling the package, and removing existing documentation) with `bin/rebuild_docs`.
 
