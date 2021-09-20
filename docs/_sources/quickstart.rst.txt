@@ -1,0 +1,23 @@
+Quick Start
+===========
+
+After installing the package, use in Python:
+
+.. jupyter-execute::
+
+   from msdss_base_api import API
+   app = API()
+
+   # Add via function
+   def hello_world():
+      return "hello world!"
+   app.add_route("GET", "/", hello_world)
+
+   # Add via decorator
+   @app.add("GET", "/two")
+   def hello_world2():
+      return "hello world 2!"
+
+   # Run the app with app.start()
+   # API is hosted at http://localhost:8000
+   # app.start()

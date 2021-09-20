@@ -1,0 +1,15 @@
+How it Works
+============
+
+The base API wraps around `FastAPI <https://fastapi.tiangolo.com/>`_ to define routes and logic, while `Uvicorn <https://www.uvicorn.org/>`_ is used to serve the APIs.
+
+.. digraph:: methods
+
+   rankdir=LR;
+   api[label="FastAPI" URL="https://fastapi.tiangolo.com/"];
+   server[label="Uvicorn" URL="https://www.uvicorn.org/"];
+
+   subgraph cluster {
+      api -> server;
+      label="msdss-base-api";
+   }

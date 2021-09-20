@@ -22,7 +22,7 @@ class API:
 
     Example
     -------
-    .. code-block:: python
+    .. jupyter-execute::
 
         from msdss_base_api.core import API
         app = API()
@@ -37,10 +37,9 @@ class API:
         def hello_world2():
             return "hello world 2!"
 
-        # Run the app
-        # Visit http://localhost:8000 on your browser
-        app.start()
-
+        # Run the app with app.start()
+        # API is hosted at http://localhost:8000
+        # app.start()
     """
     def __init__(self, api=FastAPI()):
         self.app = api
@@ -64,7 +63,7 @@ class API:
 
         Example
         -------
-        .. code-block:: python
+        .. jupyter-execute::
 
             from msdss_base_api.core import API
             app = API()
@@ -98,7 +97,7 @@ class API:
 
         Example
         -------
-        .. code-block:: python
+        .. jupyter-execute::
 
             from msdss_base_api.core import API
             app = API()
@@ -124,7 +123,7 @@ class API:
 
         Example
         -------
-        .. code-block:: python
+        .. jupyter-execute::
 
             from msdss_base_api.core import API
             app = API()
@@ -166,7 +165,7 @@ class API:
 
         Example
         -------
-        .. code-block:: python
+        .. jupyter-execute::
 
             from msdss_base_api.core import API
             app = API()
@@ -175,6 +174,8 @@ class API:
                 return "hello world!"
             app.add_route("GET", "/", hello_world)
 
-            app.start()
+            # Run the app with app.start()
+            # API is hosted at http://localhost:8000
+            # app.start()
         """
         uvicorn.run(self.app, host=host, port=port, log_level="info", *args, **kwargs)

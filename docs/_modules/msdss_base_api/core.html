@@ -45,10 +45,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../index.html">msdss-base-api</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../reference.html">API Reference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../reference.html#api-class">API Class</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference.html">API Class Reference</a></li>
 </ul>
 
         </div>
@@ -100,7 +97,7 @@
 
 <span class="sd">    Example</span>
 <span class="sd">    -------</span>
-<span class="sd">    .. code-block:: python</span>
+<span class="sd">    .. jupyter-execute::</span>
 
 <span class="sd">        from msdss_base_api.core import API</span>
 <span class="sd">        app = API()</span>
@@ -115,10 +112,9 @@
 <span class="sd">        def hello_world2():</span>
 <span class="sd">            return &quot;hello world 2!&quot;</span>
 
-<span class="sd">        # Run the app</span>
-<span class="sd">        # Visit http://localhost:8000 on your browser</span>
-<span class="sd">        app.start()</span>
-
+<span class="sd">        # Run the app with app.start()</span>
+<span class="sd">        # API is hosted at http://localhost:8000</span>
+<span class="sd">        # app.start()</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api</span><span class="o">=</span><span class="n">FastAPI</span><span class="p">()):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">app</span> <span class="o">=</span> <span class="n">api</span>
@@ -142,7 +138,7 @@
 
 <span class="sd">        Example</span>
 <span class="sd">        -------</span>
-<span class="sd">        .. code-block:: python</span>
+<span class="sd">        .. jupyter-execute::</span>
 
 <span class="sd">            from msdss_base_api.core import API</span>
 <span class="sd">            app = API()</span>
@@ -176,7 +172,7 @@
 
 <span class="sd">        Example</span>
 <span class="sd">        -------</span>
-<span class="sd">        .. code-block:: python</span>
+<span class="sd">        .. jupyter-execute::</span>
 
 <span class="sd">            from msdss_base_api.core import API</span>
 <span class="sd">            app = API()</span>
@@ -202,7 +198,7 @@
 
 <span class="sd">        Example</span>
 <span class="sd">        -------</span>
-<span class="sd">        .. code-block:: python</span>
+<span class="sd">        .. jupyter-execute::</span>
 
 <span class="sd">            from msdss_base_api.core import API</span>
 <span class="sd">            app = API()</span>
@@ -244,7 +240,7 @@
 
 <span class="sd">        Example</span>
 <span class="sd">        -------</span>
-<span class="sd">        .. code-block:: python</span>
+<span class="sd">        .. jupyter-execute::</span>
 
 <span class="sd">            from msdss_base_api.core import API</span>
 <span class="sd">            app = API()</span>
@@ -253,7 +249,9 @@
 <span class="sd">                return &quot;hello world!&quot;</span>
 <span class="sd">            app.add_route(&quot;GET&quot;, &quot;/&quot;, hello_world)</span>
 
-<span class="sd">            app.start()</span>
+<span class="sd">            # Run the app with app.start()</span>
+<span class="sd">            # API is hosted at http://localhost:8000</span>
+<span class="sd">            # app.start()</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">uvicorn</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="n">port</span><span class="p">,</span> <span class="n">log_level</span><span class="o">=</span><span class="s2">&quot;info&quot;</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div></div>
 </pre></div>

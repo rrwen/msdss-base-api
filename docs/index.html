@@ -23,8 +23,7 @@
         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="API Reference" href="reference.html" /> 
+    <link rel="search" title="Search" href="search.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -47,10 +46,13 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">msdss-base-api</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reference.html">API Reference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="reference.html#api-class">API Class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#install">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#quick-start">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#how-it-works">How it Works</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#api-reference">API Reference</a><ul class="simple">
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="#contact">Contact</a></li>
 </ul>
 
         </div>
@@ -79,13 +81,14 @@
              
   <section id="msdss-base-api">
 <h1>msdss-base-api<a class="headerlink" href="#msdss-base-api" title="Permalink to this headline"></a></h1>
+<p>Base API for the Modular Spatial Decision Support Systems (MSDSS) framework.</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.github.com/rrwen/msdss-base-api">Github</a></p></li>
 <li><p><a class="reference external" href="https://github.com/rrwen/msdss-base-api/blob/master/LICENSE">License</a></p></li>
 </ul>
-<p>Base API for the Modular Spatial Decision Support Systems (MSDSS) framework.</p>
+</section>
 <section id="install">
-<h2>Install<a class="headerlink" href="#install" title="Permalink to this headline"></a></h2>
+<h1>Install<a class="headerlink" href="#install" title="Permalink to this headline"></a></h1>
 <ol class="arabic simple">
 <li><p>Install <a class="reference external" href="https://www.anaconda.com/">Anaconda 3</a> for Python</p></li>
 <li><p>Install <code class="docutils literal notranslate"><span class="pre">msdss-base-api</span></code> via pip or through a conda environment</p></li>
@@ -97,30 +100,36 @@
 </div>
 </section>
 <section id="quick-start">
-<h2>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this headline"></a></h2>
+<h1>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this headline"></a></h1>
 <p>After installing the package, use in Python:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">msdss_base_api</span> <span class="kn">import</span> <span class="n">API</span>
-<span class="n">app</span> <span class="o">=</span> <span class="n">API</span><span class="p">()</span>
-
-<span class="c1"># Add via function</span>
-<span class="k">def</span> <span class="nf">hello_world</span><span class="p">():</span>
-   <span class="k">return</span> <span class="s2">&quot;hello world!&quot;</span>
-<span class="n">app</span><span class="o">.</span><span class="n">add_route</span><span class="p">(</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="n">hello_world</span><span class="p">)</span>
-
-<span class="c1"># Add via decorator</span>
-<span class="nd">@app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;/two&quot;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">hello_world2</span><span class="p">():</span>
-   <span class="k">return</span> <span class="s2">&quot;hello world 2!&quot;</span>
-
-<span class="c1"># Run the app</span>
-<span class="c1"># Visit http://localhost:8000 on your browser</span>
-<span class="n">app</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">msdss_base_api</span> <span class="kn">import</span> <span class="n">API</span>
+<span class="linenos"> 2</span><span class="n">app</span> <span class="o">=</span> <span class="n">API</span><span class="p">()</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="c1"># Add via function</span>
+<span class="linenos"> 5</span><span class="k">def</span> <span class="nf">hello_world</span><span class="p">():</span>
+<span class="linenos"> 6</span>   <span class="k">return</span> <span class="s2">&quot;hello world!&quot;</span>
+<span class="linenos"> 7</span><span class="n">app</span><span class="o">.</span><span class="n">add_route</span><span class="p">(</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="n">hello_world</span><span class="p">)</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="c1"># Add via decorator</span>
+<span class="linenos">10</span><span class="nd">@app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;/two&quot;</span><span class="p">)</span>
+<span class="linenos">11</span><span class="k">def</span> <span class="nf">hello_world2</span><span class="p">():</span>
+<span class="linenos">12</span>   <span class="k">return</span> <span class="s2">&quot;hello world 2!&quot;</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span><span class="c1"># Run the app with app.start()</span>
+<span class="linenos">15</span><span class="c1"># API is hosted at http://localhost:8000</span>
+<span class="linenos">16</span><span class="c1"># app.start()</span>
 </pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
 </div>
 </section>
 <section id="how-it-works">
-<h2>How it Works<a class="headerlink" href="#how-it-works" title="Permalink to this headline"></a></h2>
-<p>The base API wraps around <a class="reference external" href="https://fastapi.tiangolo.com/">FastAPI</a> to define routes and logic, while <a class="reference external" href="https://www.uvicorn.org/">Uvicorn</a> is used to serve programmed APIs.</p>
+<h1>How it Works<a class="headerlink" href="#how-it-works" title="Permalink to this headline"></a></h1>
+<p>The base API wraps around <a class="reference external" href="https://fastapi.tiangolo.com/">FastAPI</a> to define routes and logic, while <a class="reference external" href="https://www.uvicorn.org/">Uvicorn</a> is used to serve the APIs.</p>
 <div class="graphviz"><img src="_images/graphviz-a169c93f4951e40c5c18f623e238bdf5c5e73da9.png" alt="digraph methods {
 rankdir=LR;
 api[label=&quot;FastAPI&quot; URL=&quot;https://fastapi.tiangolo.com/&quot;];
@@ -135,20 +144,211 @@ subgraph cluster {
 <area shape="poly" id="node1" href="https://fastapi.tiangolo.com/" title="FastAPI" alt="" coords="134,81,131,74,124,67,112,62,97,59,80,57,64,59,49,62,37,67,29,74,27,81,29,89,37,95,49,101,64,104,80,105,97,104,112,101,124,95,131,89"/>
 <area shape="poly" id="node2" href="https://www.uvicorn.org/" title="Uvicorn" alt="" coords="290,81,287,74,279,67,267,62,252,59,236,57,219,59,204,62,192,67,185,74,182,81,185,89,192,95,204,101,219,104,236,105,252,104,267,101,279,95,287,89"/>
 </map></section>
-<section id="contact">
-<h2>Contact<a class="headerlink" href="#contact" title="Permalink to this headline"></a></h2>
+<section id="api-reference">
+<h1>API Reference<a class="headerlink" href="#api-reference" title="Permalink to this headline"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="msdss_base_api.core.API">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">msdss_base_api.core.</span></span><span class="sig-name descname"><span class="pre">API</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">api=&lt;fastapi.applications.FastAPI</span> <span class="pre">object&gt;</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/msdss_base_api/core.html#API"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#msdss_base_api.core.API" title="Permalink to this definition"></a></dt>
+<dd><p>Base class for mSDSS related APIs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>api</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">fastapi:fastapi.FastAPI</span></code>) – API object to use for creating routes.</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="msdss_base_api.core.API.api">
+<span class="sig-name descname"><span class="pre">api</span></span><a class="headerlink" href="#msdss_base_api.core.API.api" title="Permalink to this definition"></a></dt>
+<dd><p>API object passed from parameter <code class="docutils literal notranslate"><span class="pre">api</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">fastapi.FastAPI</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Author</p>
 <p>Richard Wen &lt;<a class="reference external" href="mailto:rrwen&#46;dev&#37;&#52;&#48;gmail&#46;com">rrwen<span>&#46;</span>dev<span>&#64;</span>gmail<span>&#46;</span>com</a>&gt;</p>
+<p class="rubric">Example</p>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">msdss_base_api.core</span> <span class="kn">import</span> <span class="n">API</span>
+<span class="linenos"> 2</span><span class="n">app</span> <span class="o">=</span> <span class="n">API</span><span class="p">()</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="c1"># Add via function</span>
+<span class="linenos"> 5</span><span class="k">def</span> <span class="nf">hello_world</span><span class="p">():</span>
+<span class="linenos"> 6</span>    <span class="k">return</span> <span class="s2">&quot;hello world!&quot;</span>
+<span class="linenos"> 7</span><span class="n">app</span><span class="o">.</span><span class="n">add_route</span><span class="p">(</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="n">hello_world</span><span class="p">)</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="c1"># Add via decorator</span>
+<span class="linenos">10</span><span class="nd">@app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;/two&quot;</span><span class="p">)</span>
+<span class="linenos">11</span><span class="k">def</span> <span class="nf">hello_world2</span><span class="p">():</span>
+<span class="linenos">12</span>    <span class="k">return</span> <span class="s2">&quot;hello world 2!&quot;</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span><span class="c1"># Run the app with app.start()</span>
+<span class="linenos">15</span><span class="c1"># API is hosted at http://localhost:8000</span>
+<span class="linenos">16</span><span class="c1"># app.start()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="msdss_base_api.core.API.add">
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/msdss_base_api/core.html#API.add"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#msdss_base_api.core.API.add" title="Permalink to this definition"></a></dt>
+<dd><p>Decorator function for adding routes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>method</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – HTTP request method (GET, POST, PUT, DELETE, etc).</p></li>
+<li><p><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – Path (e.g. “/”) of the route for the API.</p></li>
+<li><p><strong>*args</strong> – Additional arguments passed to the <code class="docutils literal notranslate"><span class="pre">fastapi.FastAPI.add_route</span></code> method.</p></li>
+<li><p><strong>**kwargs</strong> – Additional arguments passed to the <code class="docutils literal notranslate"><span class="pre">fastapi.FastAPI.add_route</span></code> method.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Author</p>
+<p>Richard Wen &lt;<a class="reference external" href="mailto:rrwen&#46;dev&#37;&#52;&#48;gmail&#46;com">rrwen<span>&#46;</span>dev<span>&#64;</span>gmail<span>&#46;</span>com</a>&gt;</p>
+<p class="rubric">Example</p>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">msdss_base_api.core</span> <span class="kn">import</span> <span class="n">API</span>
+<span class="linenos">2</span><span class="n">app</span> <span class="o">=</span> <span class="n">API</span><span class="p">()</span>
+<span class="linenos">3</span>
+<span class="linenos">4</span><span class="nd">@app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;/&quot;</span><span class="p">)</span>
+<span class="linenos">5</span><span class="k">def</span> <span class="nf">hello_world</span><span class="p">():</span>
+<span class="linenos">6</span>    <span class="k">return</span> <span class="s2">&quot;hello world!&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="msdss_base_api.core.API.add_route">
+<span class="sig-name descname"><span class="pre">add_route</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/msdss_base_api/core.html#API.add_route"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#msdss_base_api.core.API.add_route" title="Permalink to this definition"></a></dt>
+<dd><p>Add a route to the API.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>method</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – HTTP request method (GET, POST, PUT, DELETE, etc).</p></li>
+<li><p><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – Path (e.g. “/”) of the route for the API.</p></li>
+<li><p><strong>func</strong> (<em>func</em>) – Function to execute when route is reached.</p></li>
+<li><p><strong>*args</strong> – Additional arguments passed to the <code class="docutils literal notranslate"><span class="pre">fastapi.FastAPI.add_route</span></code> method.</p></li>
+<li><p><strong>**kwargs</strong> – Additional arguments passed to the <code class="docutils literal notranslate"><span class="pre">fastapi.FastAPI.add_route</span></code> method.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Author</p>
+<p>Richard Wen &lt;<a class="reference external" href="mailto:rrwen&#46;dev&#37;&#52;&#48;gmail&#46;com">rrwen<span>&#46;</span>dev<span>&#64;</span>gmail<span>&#46;</span>com</a>&gt;</p>
+<p class="rubric">Example</p>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">msdss_base_api.core</span> <span class="kn">import</span> <span class="n">API</span>
+<span class="linenos">2</span><span class="n">app</span> <span class="o">=</span> <span class="n">API</span><span class="p">()</span>
+<span class="linenos">3</span>
+<span class="linenos">4</span><span class="k">def</span> <span class="nf">hello_world</span><span class="p">():</span>
+<span class="linenos">5</span>    <span class="k">return</span> <span class="s2">&quot;hello world!&quot;</span>
+<span class="linenos">6</span><span class="n">app</span><span class="o">.</span><span class="n">add_route</span><span class="p">(</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="n">hello_world</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="msdss_base_api.core.API.add_routes">
+<span class="sig-name descname"><span class="pre">add_routes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">routes</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/msdss_base_api/core.html#API.add_routes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#msdss_base_api.core.API.add_routes" title="Permalink to this definition"></a></dt>
+<dd><p>Add multiple routes using a dict to the API.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>routes</strong> (<em>list of dict</em>) – A list of dictionaries containing routes with the same parameter names as <code class="xref py py-meth docutils literal notranslate"><span class="pre">core.API.add_route()</span></code>.</p>
+</dd>
+</dl>
+<p class="rubric">Author</p>
+<p>Richard Wen &lt;<a class="reference external" href="mailto:rrwen&#46;dev&#37;&#52;&#48;gmail&#46;com">rrwen<span>&#46;</span>dev<span>&#64;</span>gmail<span>&#46;</span>com</a>&gt;</p>
+<p class="rubric">Example</p>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">msdss_base_api.core</span> <span class="kn">import</span> <span class="n">API</span>
+<span class="linenos"> 2</span><span class="n">app</span> <span class="o">=</span> <span class="n">API</span><span class="p">()</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="k">def</span> <span class="nf">hello_world</span><span class="p">():</span>
+<span class="linenos"> 5</span>    <span class="k">return</span> <span class="s2">&quot;hello world!&quot;</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="k">def</span> <span class="nf">hello_world2</span><span class="p">():</span>
+<span class="linenos"> 8</span>    <span class="k">return</span> <span class="s2">&quot;hello world 2!&quot;</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="n">routes</span> <span class="o">=</span> <span class="p">[</span>
+<span class="linenos">11</span>    <span class="p">{</span><span class="s2">&quot;method&quot;</span><span class="p">:</span> <span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="s2">&quot;func&quot;</span><span class="p">:</span> <span class="n">hello_world</span><span class="p">},</span>
+<span class="linenos">12</span>    <span class="p">{</span><span class="s2">&quot;method&quot;</span><span class="p">:</span> <span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/two&quot;</span><span class="p">,</span> <span class="s2">&quot;func&quot;</span><span class="p">:</span> <span class="n">hello_world2</span><span class="p">},</span>
+<span class="linenos">13</span><span class="p">]</span>
+<span class="linenos">14</span>
+<span class="linenos">15</span><span class="n">app</span><span class="o">.</span><span class="n">add_routes</span><span class="p">(</span><span class="n">routes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="msdss_base_api.core.API.start">
+<span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">host</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'127.0.0.1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'info'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/msdss_base_api/core.html#API.start"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#msdss_base_api.core.API.start" title="Permalink to this definition"></a></dt>
+<dd><p>Starts a server to host the API.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>host</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – Host address for the server.</p></li>
+<li><p><strong>port</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a>) – Port number of the host.</p></li>
+<li><p><strong>log_level</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – Level of verbose messages to display and log.</p></li>
+<li><p><strong>*args</strong> – Additional arguments passed to the <code class="docutils literal notranslate"><span class="pre">uvicorn.run</span></code> method.</p></li>
+<li><p><strong>**kwargs</strong> – Additional arguments passed to the <code class="docutils literal notranslate"><span class="pre">uvicorn.run</span></code> method.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Author</p>
+<p>Richard Wen &lt;<a class="reference external" href="mailto:rrwen&#46;dev&#37;&#52;&#48;gmail&#46;com">rrwen<span>&#46;</span>dev<span>&#64;</span>gmail<span>&#46;</span>com</a>&gt;</p>
+<p class="rubric">Example</p>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">msdss_base_api.core</span> <span class="kn">import</span> <span class="n">API</span>
+<span class="linenos"> 2</span><span class="n">app</span> <span class="o">=</span> <span class="n">API</span><span class="p">()</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="k">def</span> <span class="nf">hello_world</span><span class="p">():</span>
+<span class="linenos"> 5</span>    <span class="k">return</span> <span class="s2">&quot;hello world!&quot;</span>
+<span class="linenos"> 6</span><span class="n">app</span><span class="o">.</span><span class="n">add_route</span><span class="p">(</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="n">hello_world</span><span class="p">)</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="c1"># Run the app with app.start()</span>
+<span class="linenos"> 9</span><span class="c1"># API is hosted at http://localhost:8000</span>
+<span class="linenos">10</span><span class="c1"># app.start()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
 <div class="toctree-wrapper compound">
 </div>
 </section>
+<section id="contact">
+<h1>Contact<a class="headerlink" href="#contact" title="Permalink to this headline"></a></h1>
+<p>Richard Wen &lt;<a class="reference external" href="mailto:rrwen&#46;dev&#37;&#52;&#48;gmail&#46;com">rrwen<span>&#46;</span>dev<span>&#64;</span>gmail<span>&#46;</span>com</a>&gt;</p>
 </section>
 
 
            </div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="reference.html" class="btn btn-neutral float-right" title="API Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
+          <footer>
 
   <hr/>
 

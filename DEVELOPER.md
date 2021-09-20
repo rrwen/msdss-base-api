@@ -46,11 +46,11 @@ git lfs pull
 bin\install
 ```
 
-# Environment
+# Virtual Environment
 
 A [conda environment](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-with-commands) will also be created with `bin/install`, which installs the environment defined by `env.yml`.
 
-If you are opening a new terminal, you will need to use `bin/activate` to activate environment.
+If you are opening a new terminal, you will need to use `bin/activate` to activate the environment.
 
 In Linux/Mac OS:
 

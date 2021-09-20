@@ -1,13 +1,14 @@
 msdss-base-api
 ==============
 
+Base API for the Modular Spatial Decision Support Systems (MSDSS) framework.
+
+
 * `Github <https://www.github.com/rrwen/msdss-base-api>`_
 * `License <https://github.com/rrwen/msdss-base-api/blob/master/LICENSE>`_
 
-Base API for the Modular Spatial Decision Support Systems (MSDSS) framework.
-
 Install
--------
+=======
 
 1. Install `Anaconda 3 <https://www.anaconda.com/>`_ for Python
 2. Install ``msdss-base-api`` via pip or through a conda environment
@@ -19,11 +20,11 @@ Install
    pip install msdss-base-api
 
 Quick Start
------------
+===========
 
 After installing the package, use in Python:
 
-.. code:: python
+.. jupyter-execute::
 
    from msdss_base_api import API
    app = API()
@@ -38,14 +39,14 @@ After installing the package, use in Python:
    def hello_world2():
       return "hello world 2!"
 
-   # Run the app
-   # Visit http://localhost:8000 on your browser
-   app.start()
+   # Run the app with app.start()
+   # API is hosted at http://localhost:8000
+   # app.start()
 
 How it Works
-------------
+============
 
-The base API wraps around `FastAPI <https://fastapi.tiangolo.com/>`_ to define routes and logic, while `Uvicorn <https://www.uvicorn.org/>`_ is used to serve programmed APIs.
+The base API wraps around `FastAPI <https://fastapi.tiangolo.com/>`_ to define routes and logic, while `Uvicorn <https://www.uvicorn.org/>`_ is used to serve the APIs.
 
 .. digraph:: methods
 
@@ -58,13 +59,19 @@ The base API wraps around `FastAPI <https://fastapi.tiangolo.com/>`_ to define r
       label="msdss-base-api";
    }
 
-Contact
--------
+API Reference
+=============
 
-Richard Wen <rrwen.dev@gmail.com>
+.. autoclass:: msdss_base_api.core.API
+    :members:
 
 .. toctree:: 
+   :maxdepth: 2
    :hidden:
 
-   self
-   reference
+   index
+
+Contact
+=======
+
+Richard Wen <rrwen.dev@gmail.com>

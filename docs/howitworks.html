@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Index &mdash; msdss_base_api 0.0.0 documentation</title>
+  <title>How it Works &mdash; msdss_base_api 0.0.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -21,8 +22,10 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script src="_static/js/theme.js"></script>
-    <link rel="index" title="Index" href="#" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="API Reference" href="reference.html" />
+    <link rel="prev" title="Quick Start" href="quickstart.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -43,15 +46,12 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
-<li class="toctree-l1"><a class="reference internal" href="index.html">msdss-base-api</a></li>
-<li class="toctree-l1"><a class="reference internal" href="index.html#install">Install</a></li>
-<li class="toctree-l1"><a class="reference internal" href="index.html#quick-start">Quick Start</a></li>
-<li class="toctree-l1"><a class="reference internal" href="index.html#how-it-works">How it Works</a></li>
-<li class="toctree-l1"><a class="reference internal" href="index.html#api-reference">API Reference</a><ul class="simple">
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="index.html#contact">Contact</a></li>
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">How it Works</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contact.html">Contact</a></li>
 </ul>
 
         </div>
@@ -68,8 +68,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Index</li>
+      <li>How it Works</li>
       <li class="wy-breadcrumbs-aside">
+            <a href="_sources/howitworks.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -77,45 +78,31 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
+  <section id="how-it-works">
+<h1>How it Works<a class="headerlink" href="#how-it-works" title="Permalink to this headline"></a></h1>
+<p>The base API wraps around <a class="reference external" href="https://fastapi.tiangolo.com/">FastAPI</a> to define routes and logic, while <a class="reference external" href="https://www.uvicorn.org/">Uvicorn</a> is used to serve the APIs.</p>
+<div class="graphviz"><img src="_images/graphviz-60e28bfc89abd1f1d5842ef1336e5dab8164411f.png" alt="digraph methods {
+rankdir=LR;
+api[label=&quot;FastAPI&quot; URL=&quot;https://fastapi.tiangolo.com/&quot;];
+server[label=&quot;Uvicorn&quot; URL=&quot;https://www.uvicorn.org/&quot;];
 
-<h1 id="index">Index</h1>
-
-<div class="genindex-jumpbox">
- <a href="#A"><strong>A</strong></a>
- | <a href="#S"><strong>S</strong></a>
- 
-</div>
-<h2 id="A">A</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="index.html#msdss_base_api.core.API.add">add() (msdss_base_api.core.API method)</a>
-</li>
-      <li><a href="index.html#msdss_base_api.core.API.add_route">add_route() (msdss_base_api.core.API method)</a>
-</li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="index.html#msdss_base_api.core.API.add_routes">add_routes() (msdss_base_api.core.API method)</a>
-</li>
-      <li><a href="index.html#msdss_base_api.core.API">API (class in msdss_base_api.core)</a>
-</li>
-      <li><a href="index.html#msdss_base_api.core.API.api">api (msdss_base_api.core.API attribute)</a>
-</li>
-  </ul></td>
-</tr></table>
-
-<h2 id="S">S</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="index.html#msdss_base_api.core.API.start">start() (msdss_base_api.core.API method)</a>
-</li>
-  </ul></td>
-</tr></table>
-
+subgraph cluster {
+   api -&gt; server;
+   label=&quot;msdss-base-api&quot;;
+}
+}" usemap="#methods" class="graphviz" /></div>
+<map id="methods" name="methods">
+<area shape="poly" id="node1" href="https://fastapi.tiangolo.com/" title="FastAPI" alt="" coords="134,81,131,74,124,67,112,62,97,59,80,57,64,59,49,62,37,67,29,74,27,81,29,89,37,95,49,101,64,104,80,105,97,104,112,101,124,95,131,89"/>
+<area shape="poly" id="node2" href="https://www.uvicorn.org/" title="Uvicorn" alt="" coords="290,81,287,74,279,67,267,62,252,59,236,57,219,59,204,62,192,67,185,74,182,81,185,89,192,95,204,101,219,104,236,105,252,104,267,101,279,95,287,89"/>
+</map></section>
 
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="quickstart.html" class="btn btn-neutral float-left" title="Quick Start" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="reference.html" class="btn btn-neutral float-right" title="API Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 
