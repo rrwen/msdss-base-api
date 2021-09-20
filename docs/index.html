@@ -107,12 +107,12 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">msdss_base_api</span> <span class="kn">import</span> <span class="n">API</span>
 <span class="linenos"> 2</span><span class="n">app</span> <span class="o">=</span> <span class="n">API</span><span class="p">()</span>
 <span class="linenos"> 3</span>
-<span class="linenos"> 4</span><span class="c1"># Add via function</span>
+<span class="linenos"> 4</span><span class="c1"># Add route via function</span>
 <span class="linenos"> 5</span><span class="k">def</span> <span class="nf">hello_world</span><span class="p">():</span>
 <span class="linenos"> 6</span>   <span class="k">return</span> <span class="s2">&quot;hello world!&quot;</span>
 <span class="linenos"> 7</span><span class="n">app</span><span class="o">.</span><span class="n">add_route</span><span class="p">(</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="n">hello_world</span><span class="p">)</span>
 <span class="linenos"> 8</span>
-<span class="linenos"> 9</span><span class="c1"># Add via decorator</span>
+<span class="linenos"> 9</span><span class="c1"># Add route via decorator</span>
 <span class="linenos">10</span><span class="nd">@app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;/two&quot;</span><span class="p">)</span>
 <span class="linenos">11</span><span class="k">def</span> <span class="nf">hello_world2</span><span class="p">():</span>
 <span class="linenos">12</span>   <span class="k">return</span> <span class="s2">&quot;hello world 2!&quot;</span>
@@ -130,19 +130,34 @@
 <section id="how-it-works">
 <h1>How it Works<a class="headerlink" href="#how-it-works" title="Permalink to this headline"></a></h1>
 <p>The base API wraps around <a class="reference external" href="https://fastapi.tiangolo.com/">FastAPI</a> to define routes and logic, while <a class="reference external" href="https://www.uvicorn.org/">Uvicorn</a> is used to serve the APIs.</p>
-<div class="graphviz"><img src="_images/graphviz-a169c93f4951e40c5c18f623e238bdf5c5e73da9.png" alt="digraph methods {
-rankdir=LR;
+<p>First a <code class="docutils literal notranslate"><span class="pre">FastAPI()</span></code> object is created, and routes are added with <a class="reference external" href="https://github.com/tiangolo/fastapi/blob/bee35f5ae1fc58e7ab125427ad4287210e99d8b3/fastapi/routing.py#L479">.add_api_route()</a>. Then <code class="docutils literal notranslate"><span class="pre">uvicorn</span></code> is used to run the app with <a class="reference external" href="https://www.uvicorn.org/deployment/#running-programmatically">.run()</a>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">fastapi</span> <span class="kn">import</span> <span class="n">FastAPI</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">uvicorn</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">helloworld</span><span class="p">():</span> <span class="k">return</span> <span class="s2">&quot;hello world!&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">app</span><span class="o">.</span><span class="n">add_api_route</span><span class="p">(</span><span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;GET&quot;</span><span class="p">],</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="n">helloworld</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">uvicorn</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="graphviz"><img src="_images/graphviz-ff5b43983ed983facf6328ad3322350f8ddacf85.png" alt="digraph methods {
+rankdir=TB;
 api[label=&quot;FastAPI&quot; URL=&quot;https://fastapi.tiangolo.com/&quot;];
+apimeth1[label=&quot;.add_api_route()&quot; shape=rect URL=&quot;https://github.com/tiangolo/fastapi/blob/bee35f5ae1fc58e7ab125427ad4287210e99d8b3/fastapi/routing.py#L479&quot;];
 server[label=&quot;Uvicorn&quot; URL=&quot;https://www.uvicorn.org/&quot;];
+servermeth1[label=&quot;.run()&quot; shape=rect URL=&quot;https://www.uvicorn.org/deployment/#running-programmatically&quot;];
 
 subgraph cluster {
-   api -&gt; server;
-   label=&quot;msdss-base-api&quot;;
+   label=&lt; &lt;B&gt;msdss-base-api&lt;/B&gt; &gt;;
+   {rank=min; api -&gt; server;}
+   apimeth1 -&gt; api[arrowhead=none];
+   servermeth1 -&gt; server[arrowhead=none];
 }
 }" usemap="#methods" class="graphviz" /></div>
 <map id="methods" name="methods">
-<area shape="poly" id="node1" href="https://fastapi.tiangolo.com/" title="FastAPI" alt="" coords="134,81,131,74,124,67,112,62,97,59,80,57,64,59,49,62,37,67,29,74,27,81,29,89,37,95,49,101,64,104,80,105,97,104,112,101,124,95,131,89"/>
-<area shape="poly" id="node2" href="https://www.uvicorn.org/" title="Uvicorn" alt="" coords="290,81,287,74,279,67,267,62,252,59,236,57,219,59,204,62,192,67,185,74,182,81,185,89,192,95,204,101,219,104,236,105,252,104,267,101,279,95,287,89"/>
+<area shape="poly" id="node1" href="https://fastapi.tiangolo.com/" title="FastAPI" alt="" coords="138,81,135,74,127,67,116,62,101,59,84,57,67,59,52,62,41,67,33,74,30,81,33,89,41,95,52,101,67,104,84,105,101,104,116,101,127,95,135,89"/>
+<area shape="poly" id="node3" href="https://www.uvicorn.org/" title="Uvicorn" alt="" coords="270,81,267,74,259,67,248,62,233,59,216,57,199,59,184,62,173,67,165,74,162,81,165,89,173,95,184,101,199,104,216,105,233,104,248,101,259,95,267,89"/>
+<area shape="rect" id="node2" href="https://github.com/tiangolo/fastapi/blob/bee35f5ae1fc58e7ab125427ad4287210e99d8b3/fastapi/routing.py#L479" title=".add_api_route()" alt="" coords="27,153,173,201"/>
+<area shape="rect" id="node4" href="https://www.uvicorn.org/deployment/#running-programmatically" title=".run()" alt="" coords="197,153,269,201"/>
 </map></section>
 <section id="api-reference">
 <h1>API Reference<a class="headerlink" href="#api-reference" title="Permalink to this headline"></a></h1>
@@ -174,12 +189,12 @@ subgraph cluster {
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">msdss_base_api.core</span> <span class="kn">import</span> <span class="n">API</span>
 <span class="linenos"> 2</span><span class="n">app</span> <span class="o">=</span> <span class="n">API</span><span class="p">()</span>
 <span class="linenos"> 3</span>
-<span class="linenos"> 4</span><span class="c1"># Add via function</span>
+<span class="linenos"> 4</span><span class="c1"># Add route via function</span>
 <span class="linenos"> 5</span><span class="k">def</span> <span class="nf">hello_world</span><span class="p">():</span>
 <span class="linenos"> 6</span>    <span class="k">return</span> <span class="s2">&quot;hello world!&quot;</span>
 <span class="linenos"> 7</span><span class="n">app</span><span class="o">.</span><span class="n">add_route</span><span class="p">(</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="n">hello_world</span><span class="p">)</span>
 <span class="linenos"> 8</span>
-<span class="linenos"> 9</span><span class="c1"># Add via decorator</span>
+<span class="linenos"> 9</span><span class="c1"># Add route via decorator</span>
 <span class="linenos">10</span><span class="nd">@app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;/two&quot;</span><span class="p">)</span>
 <span class="linenos">11</span><span class="k">def</span> <span class="nf">hello_world2</span><span class="p">():</span>
 <span class="linenos">12</span>    <span class="k">return</span> <span class="s2">&quot;hello world 2!&quot;</span>

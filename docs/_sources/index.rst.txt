@@ -29,12 +29,12 @@ After installing the package, use in Python:
    from msdss_base_api import API
    app = API()
 
-   # Add via function
+   # Add route via function
    def hello_world():
       return "hello world!"
    app.add_route("GET", "/", hello_world)
 
-   # Add via decorator
+   # Add route via decorator
    @app.add("GET", "/two")
    def hello_world2():
       return "hello world 2!"
@@ -48,15 +48,28 @@ How it Works
 
 The base API wraps around `FastAPI <https://fastapi.tiangolo.com/>`_ to define routes and logic, while `Uvicorn <https://www.uvicorn.org/>`_ is used to serve the APIs.
 
+First a ``FastAPI()`` object is created, and routes are added with `.add_api_route() <https://github.com/tiangolo/fastapi/blob/bee35f5ae1fc58e7ab125427ad4287210e99d8b3/fastapi/routing.py#L479>`_. Then ``uvicorn`` is used to run the app with `.run() <https://www.uvicorn.org/deployment/#running-programmatically>`_.
+
+>>> from fastapi import FastAPI
+>>> import uvicorn
+>>> app = FastAPI()
+>>> def helloworld(): return "hello world!"
+>>> app.add_api_route(methods=["GET"], path="/", endpoint=helloworld)
+>>> uvicorn.run(app)
+
 .. digraph:: methods
 
-   rankdir=LR;
+   rankdir=TB;
    api[label="FastAPI" URL="https://fastapi.tiangolo.com/"];
+   apimeth1[label=".add_api_route()" shape=rect URL="https://github.com/tiangolo/fastapi/blob/bee35f5ae1fc58e7ab125427ad4287210e99d8b3/fastapi/routing.py#L479"];
    server[label="Uvicorn" URL="https://www.uvicorn.org/"];
+   servermeth1[label=".run()" shape=rect URL="https://www.uvicorn.org/deployment/#running-programmatically"];
 
    subgraph cluster {
-      api -> server;
-      label="msdss-base-api";
+      label=< <B>msdss-base-api</B> >;
+      {rank=min; api -> server;}
+      apimeth1 -> api[arrowhead=none];
+      servermeth1 -> server[arrowhead=none];
    }
 
 API Reference

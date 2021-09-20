@@ -1,0 +1,4 @@
+<map id="methods" name="methods">
+<area shape="poly" id="node1" href="https://fastapi.tiangolo.com/" title="FastAPI" alt="" coords="134,153,131,146,124,139,112,134,97,131,80,129,64,131,49,134,37,139,29,146,27,153,29,161,37,167,49,173,64,176,80,177,97,176,112,173,124,167,131,161"/>
+<area shape="poly" id="node3" href="https://www.uvicorn.org/" title="Uvicorn" alt="" coords="134,81,131,74,124,67,112,62,97,59,80,57,64,59,49,62,37,67,29,74,27,81,29,89,37,95,49,101,64,104,80,105,97,104,112,101,124,95,131,89"/>
+</map>

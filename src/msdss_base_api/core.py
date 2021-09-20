@@ -27,12 +27,12 @@ class API:
         from msdss_base_api.core import API
         app = API()
 
-        # Add via function
+        # Add route via function
         def hello_world():
             return "hello world!"
         app.add_route("GET", "/", hello_world)
 
-        # Add via decorator
+        # Add route via decorator
         @app.add("GET", "/two")
         def hello_world2():
             return "hello world 2!"

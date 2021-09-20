@@ -45,7 +45,13 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../index.html">msdss-base-api</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../reference.html">API Class Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html#install">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html#quick-start">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html#how-it-works">How it Works</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html#api-reference">API Reference</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html#contact">Contact</a></li>
 </ul>
 
         </div>
@@ -77,7 +83,7 @@
 
 <span class="kn">from</span> <span class="nn">fastapi</span> <span class="kn">import</span> <span class="n">FastAPI</span>
 
-<div class="viewcode-block" id="API"><a class="viewcode-back" href="../../reference.html#msdss_base_api.core.API">[docs]</a><span class="k">class</span> <span class="nc">API</span><span class="p">:</span>
+<div class="viewcode-block" id="API"><a class="viewcode-back" href="../../index.html#msdss_base_api.core.API">[docs]</a><span class="k">class</span> <span class="nc">API</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Base class for mSDSS related APIs.</span>
 
@@ -102,12 +108,12 @@
 <span class="sd">        from msdss_base_api.core import API</span>
 <span class="sd">        app = API()</span>
 
-<span class="sd">        # Add via function</span>
+<span class="sd">        # Add route via function</span>
 <span class="sd">        def hello_world():</span>
 <span class="sd">            return &quot;hello world!&quot;</span>
 <span class="sd">        app.add_route(&quot;GET&quot;, &quot;/&quot;, hello_world)</span>
 
-<span class="sd">        # Add via decorator</span>
+<span class="sd">        # Add route via decorator</span>
 <span class="sd">        @app.add(&quot;GET&quot;, &quot;/two&quot;)</span>
 <span class="sd">        def hello_world2():</span>
 <span class="sd">            return &quot;hello world 2!&quot;</span>
@@ -119,7 +125,7 @@
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api</span><span class="o">=</span><span class="n">FastAPI</span><span class="p">()):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">app</span> <span class="o">=</span> <span class="n">api</span>
 
-<div class="viewcode-block" id="API.add"><a class="viewcode-back" href="../../reference.html#msdss_base_api.core.API.add">[docs]</a>    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="API.add"><a class="viewcode-back" href="../../index.html#msdss_base_api.core.API.add">[docs]</a>    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Decorator function for adding routes.</span>
 
@@ -151,7 +157,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">add_route</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">,</span> <span class="n">func</span><span class="o">=</span><span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">add_decorator</span></div>
 
-<div class="viewcode-block" id="API.add_route"><a class="viewcode-back" href="../../reference.html#msdss_base_api.core.API.add_route">[docs]</a>    <span class="k">def</span> <span class="nf">add_route</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="API.add_route"><a class="viewcode-back" href="../../index.html#msdss_base_api.core.API.add_route">[docs]</a>    <span class="k">def</span> <span class="nf">add_route</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Add a route to the API.</span>
 
@@ -183,7 +189,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">add_api_route</span><span class="p">(</span><span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="n">method</span><span class="p">],</span> <span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="API.add_routes"><a class="viewcode-back" href="../../reference.html#msdss_base_api.core.API.add_routes">[docs]</a>    <span class="k">def</span> <span class="nf">add_routes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">routes</span><span class="p">):</span>
+<div class="viewcode-block" id="API.add_routes"><a class="viewcode-back" href="../../index.html#msdss_base_api.core.API.add_routes">[docs]</a>    <span class="k">def</span> <span class="nf">add_routes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">routes</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Add multiple routes using a dict to the API.</span>
 
@@ -219,7 +225,7 @@
         <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">routes</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">add_route</span><span class="p">(</span><span class="o">**</span><span class="n">r</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="API.start"><a class="viewcode-back" href="../../reference.html#msdss_base_api.core.API.start">[docs]</a>    <span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">8000</span><span class="p">,</span> <span class="n">log_level</span><span class="o">=</span><span class="s2">&quot;info&quot;</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="API.start"><a class="viewcode-back" href="../../index.html#msdss_base_api.core.API.start">[docs]</a>    <span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">8000</span><span class="p">,</span> <span class="n">log_level</span><span class="o">=</span><span class="s2">&quot;info&quot;</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Starts a server to host the API.</span>
 
