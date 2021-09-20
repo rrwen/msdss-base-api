@@ -139,15 +139,16 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">uvicorn</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="graphviz"><img src="_images/graphviz-ff5b43983ed983facf6328ad3322350f8ddacf85.png" alt="digraph methods {
+<div class="graphviz"><img src="_images/graphviz-7f1d5689347ba1639bc8b6ea12898f96e0d66ca3.png" alt="digraph methods {
 rankdir=TB;
-api[label=&quot;FastAPI&quot; URL=&quot;https://fastapi.tiangolo.com/&quot;];
-apimeth1[label=&quot;.add_api_route()&quot; shape=rect URL=&quot;https://github.com/tiangolo/fastapi/blob/bee35f5ae1fc58e7ab125427ad4287210e99d8b3/fastapi/routing.py#L479&quot;];
-server[label=&quot;Uvicorn&quot; URL=&quot;https://www.uvicorn.org/&quot;];
-servermeth1[label=&quot;.run()&quot; shape=rect URL=&quot;https://www.uvicorn.org/deployment/#running-programmatically&quot;];
+api[label=&quot;FastAPI&quot; URL=&quot;https://fastapi.tiangolo.com/&quot; style=filled];
+apimeth1[label=&quot;.add_api_route()&quot; shape=rect style=rounded URL=&quot;https://github.com/tiangolo/fastapi/blob/bee35f5ae1fc58e7ab125427ad4287210e99d8b3/fastapi/routing.py#L479&quot;];
+server[label=&quot;Uvicorn&quot; URL=&quot;https://www.uvicorn.org/&quot; style=filled];
+servermeth1[label=&quot;.run()&quot; shape=rect style=rounded URL=&quot;https://www.uvicorn.org/deployment/#running-programmatically&quot;];
 
 subgraph cluster {
    label=&lt; &lt;B&gt;msdss-base-api&lt;/B&gt; &gt;;
+   style=rounded;
    {rank=min; api -&gt; server;}
    apimeth1 -&gt; api[arrowhead=none];
    servermeth1 -&gt; server[arrowhead=none];

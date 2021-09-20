@@ -60,13 +60,14 @@ First a ``FastAPI()`` object is created, and routes are added with `.add_api_rou
 .. digraph:: methods
 
    rankdir=TB;
-   api[label="FastAPI" URL="https://fastapi.tiangolo.com/"];
-   apimeth1[label=".add_api_route()" shape=rect URL="https://github.com/tiangolo/fastapi/blob/bee35f5ae1fc58e7ab125427ad4287210e99d8b3/fastapi/routing.py#L479"];
-   server[label="Uvicorn" URL="https://www.uvicorn.org/"];
-   servermeth1[label=".run()" shape=rect URL="https://www.uvicorn.org/deployment/#running-programmatically"];
+   api[label="FastAPI" URL="https://fastapi.tiangolo.com/" style=filled];
+   apimeth1[label=".add_api_route()" shape=rect style=rounded URL="https://github.com/tiangolo/fastapi/blob/bee35f5ae1fc58e7ab125427ad4287210e99d8b3/fastapi/routing.py#L479"];
+   server[label="Uvicorn" URL="https://www.uvicorn.org/" style=filled];
+   servermeth1[label=".run()" shape=rect style=rounded URL="https://www.uvicorn.org/deployment/#running-programmatically"];
 
    subgraph cluster {
       label=< <B>msdss-base-api</B> >;
+      style=rounded;
       {rank=min; api -> server;}
       apimeth1 -> api[arrowhead=none];
       servermeth1 -> server[arrowhead=none];
