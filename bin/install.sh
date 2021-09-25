@@ -1,4 +1,4 @@
-conda env create --prefix ./env/linux --file ./env.yml
+conda env create --prefix ./env.nosync/linux --file ./env.yml
 chmod +x ./bin/activate.sh
 chmod +x ./bin/deactivate.sh
 chmod +x ./bin/uninstall.sh

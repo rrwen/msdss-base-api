@@ -1,2 +1,2 @@
 source bin/deactivate.sh
-conda remove --prefix ./env/linux --all
+conda remove --prefix ./env.nosync/linux --all

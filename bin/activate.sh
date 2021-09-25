@@ -1,1 +1,1 @@
-conda activate ./env/linux
+conda activate ./env.nosync/linux

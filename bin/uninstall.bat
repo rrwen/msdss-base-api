@@ -1,2 +1,2 @@
 call bin\deactivate
-call conda remove --prefix ./env/windows --all
+call conda remove --prefix ./env.nosync/windows --all

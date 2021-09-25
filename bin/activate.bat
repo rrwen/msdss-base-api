@@ -1,1 +1,1 @@
-conda activate ./env/windows
+conda activate ./env.nosync/windows

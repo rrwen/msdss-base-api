@@ -130,6 +130,8 @@ dmypy.json
 
 # Mac OS
 .DS_Store
+*.nosync
+*.nosync/
 
 # Executed docs codeblocks
 jupyter_execute/
