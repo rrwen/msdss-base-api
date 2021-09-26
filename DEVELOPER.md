@@ -12,8 +12,7 @@ Setup and install a development environment:
 3. Install [GraphViz](https://www.graphviz.org/)
 4. Clone this repository `git clone`
 5. Move to the cloned folder `cd msdss-base-api`
-6. Pull and download package datasets `git lfs pull`
-7. Install python dependencies with `bin\install.bat` or `bin/install.sh`
+6. Install python dependencies with `bin\install.bat` or `bin/install.sh`
 
 In Mac OS (with [Homebrew](https://brew.sh/) installed):
 
@@ -28,10 +27,9 @@ source bin/install.sh
 In Linux (Ubuntu):
 
 ```
-apt install git git-lfs graphviz -y
+apt install git graphviz -y
 git clone https://www.github.com/rrwen/msdss-base-api
 cd msdss-base-api
-git lfs pull
 chmod +x bin/install.sh
 source bin/install.sh
 ```
@@ -39,10 +37,9 @@ source bin/install.sh
 In Windows (with [Chocolatey](https://chocolatey.org/) installed):
 
 ```
-choco install git git-lfs graphviz -y
+choco install git graphviz -y
 git clone https://www.github.com/rrwen/msdss-base-api
 cd msdss-base-api
-git lfs pull
 bin\install
 ```
 
@@ -64,7 +61,7 @@ In Windows:
 bin\activate
 ```
 
-**Note**: The environment exists inside the `env/` folder.
+**Note**: The environment exists inside the `tmp/` folder.
 
 ## Documentation
 

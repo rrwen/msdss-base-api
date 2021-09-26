@@ -132,6 +132,7 @@ dmypy.json
 .DS_Store
 *.nosync
 *.nosync/
+tmp/
 
 # Executed docs codeblocks
 jupyter_execute/
