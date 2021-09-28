@@ -7,6 +7,7 @@
   
 Base API for the Modular Spatial Decision Support Systems (MSDSS) framework.
 
+* [Github](https://github.com/rrwen/msdss-base-api)
 * [Documentation](https://rrwen.github.io/msdss-base-api/)
 * [Developer Notes](https://github.com/rrwen/msdss-base-api/blob/main/DEVELOPER.md)
 

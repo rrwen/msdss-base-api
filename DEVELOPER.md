@@ -98,3 +98,31 @@ In Windows:
 ```
 bin\rebuild_docs
 ```
+
+## Publishing to Python Package Index (PyPi)
+
+When the package is ready, you can publish it to [PyPi](https://pypi.org/) so that it is publicly available and `pip` installable:
+
+1. Remove any existing version builds in the `dist/` folder
+2. Build the current package distribution files in `dist/` with `setup.py sdist`
+3. Upload the package to PyPi with `twine upload`
+4. You will be prompted for your user name and password on PyPi
+5. Your package should be available at https://pypi.org/project/msdss-base-api
+
+In Linux/Mac OS:
+
+```
+rm -rf dist
+python setup.py sdist
+twine upload dist/*
+```
+
+In Windows:
+
+```
+rmdir /s /q dist\
+python setup.py sdist
+twine upload dist/*
+```
+
+**Note**: You will need to a registered account on [PyPi](https://pypi.org/) to publish packages.

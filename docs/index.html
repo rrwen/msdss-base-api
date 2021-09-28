@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>msdss-base-api &mdash; msdss_base_api 0.0.0 documentation</title>
+  <title>msdss-base-api &mdash; msdss_base_api 0.0.1 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -34,7 +34,7 @@
             <a href="#" class="icon icon-home"> msdss_base_api
           </a>
               <div class="version">
-                0.0.0
+                0.0.1
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -83,6 +83,7 @@
 <h1>msdss-base-api<a class="headerlink" href="#msdss-base-api" title="Permalink to this headline"></a></h1>
 <p>Base API for the Modular Spatial Decision Support Systems (MSDSS) framework.</p>
 <ul class="simple">
+<li><p><a class="reference external" href="https://pypi.org/project/msdss-base-api/">PyPi</a></p></li>
 <li><p><a class="reference external" href="https://www.github.com/rrwen/msdss-base-api">Github</a></p></li>
 <li><p><a class="reference external" href="https://github.com/rrwen/msdss-base-api/blob/master/LICENSE">License</a></p></li>
 </ul>
@@ -101,25 +102,56 @@
 </section>
 <section id="quick-start">
 <h1>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this headline"></a></h1>
-<p>After installing the package, use in Python:</p>
+<p>After installing the package, use in Python via methods:</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">msdss_base_api</span> <span class="kn">import</span> <span class="n">API</span>
 <span class="linenos"> 2</span><span class="n">app</span> <span class="o">=</span> <span class="n">API</span><span class="p">()</span>
 <span class="linenos"> 3</span>
-<span class="linenos"> 4</span><span class="c1"># Add route via function</span>
+<span class="linenos"> 4</span><span class="c1"># Add GET route</span>
 <span class="linenos"> 5</span><span class="k">def</span> <span class="nf">hello_world</span><span class="p">():</span>
 <span class="linenos"> 6</span>   <span class="k">return</span> <span class="s2">&quot;hello world!&quot;</span>
 <span class="linenos"> 7</span><span class="n">app</span><span class="o">.</span><span class="n">add_route</span><span class="p">(</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="n">hello_world</span><span class="p">)</span>
 <span class="linenos"> 8</span>
-<span class="linenos"> 9</span><span class="c1"># Add route via decorator</span>
-<span class="linenos">10</span><span class="nd">@app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;/two&quot;</span><span class="p">)</span>
-<span class="linenos">11</span><span class="k">def</span> <span class="nf">hello_world2</span><span class="p">():</span>
-<span class="linenos">12</span>   <span class="k">return</span> <span class="s2">&quot;hello world 2!&quot;</span>
+<span class="linenos"> 9</span><span class="c1"># Handle startup event</span>
+<span class="linenos">10</span><span class="k">def</span> <span class="nf">before_startup</span><span class="p">():</span>
+<span class="linenos">11</span>   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This is run before startup.&quot;</span><span class="p">)</span>
+<span class="linenos">12</span><span class="n">app</span><span class="o">.</span><span class="n">on_event</span><span class="p">(</span><span class="s2">&quot;startup&quot;</span><span class="p">,</span> <span class="n">before_startup</span><span class="p">)</span>
 <span class="linenos">13</span>
-<span class="linenos">14</span><span class="c1"># Run the app with app.start()</span>
-<span class="linenos">15</span><span class="c1"># API is hosted at http://localhost:8000</span>
-<span class="linenos">16</span><span class="c1"># app.start()</span>
+<span class="linenos">14</span><span class="c1"># Handle shutdown event</span>
+<span class="linenos">15</span><span class="k">def</span> <span class="nf">during_shutdown</span><span class="p">():</span>
+<span class="linenos">16</span>   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This is run during shutdown.&quot;</span><span class="p">)</span>
+<span class="linenos">17</span><span class="n">app</span><span class="o">.</span><span class="n">on_event</span><span class="p">(</span><span class="s2">&quot;shutdown&quot;</span><span class="p">,</span> <span class="n">during_shutdown</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
+<p>or decorators:</p>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">msdss_base_api</span> <span class="kn">import</span> <span class="n">API</span>
+<span class="linenos"> 2</span><span class="n">app</span> <span class="o">=</span> <span class="n">API</span><span class="p">()</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="c1"># Add GET route</span>
+<span class="linenos"> 5</span><span class="nd">@app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;/two&quot;</span><span class="p">)</span>
+<span class="linenos"> 6</span><span class="k">def</span> <span class="nf">hello_world2</span><span class="p">():</span>
+<span class="linenos"> 7</span>   <span class="k">return</span> <span class="s2">&quot;hello world 2!&quot;</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="c1"># Handle startup event</span>
+<span class="linenos">10</span><span class="nd">@app</span><span class="o">.</span><span class="n">on</span><span class="p">(</span><span class="s2">&quot;startup&quot;</span><span class="p">)</span>
+<span class="linenos">11</span><span class="k">def</span> <span class="nf">before_startup2</span><span class="p">():</span>
+<span class="linenos">12</span>   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This is run before startup.&quot;</span><span class="p">)</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span><span class="c1"># Handle shutdown event</span>
+<span class="linenos">15</span><span class="nd">@app</span><span class="o">.</span><span class="n">on</span><span class="p">(</span><span class="s2">&quot;shutdown&quot;</span><span class="p">)</span>
+<span class="linenos">16</span><span class="k">def</span> <span class="nf">during_shutdown2</span><span class="p">():</span>
+<span class="linenos">17</span>   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This is run during shutdown.&quot;</span><span class="p">)</span>
+<span class="linenos">18</span>
+<span class="linenos">19</span><span class="c1"># Run the app with app.start()</span>
+<span class="linenos">20</span><span class="c1"># API is hosted at http://localhost:8000</span>
+<span class="linenos">21</span><span class="c1"># app.start()</span>
 </pre></div>
 </div>
 </div>
@@ -130,19 +162,22 @@
 <section id="how-it-works">
 <h1>How it Works<a class="headerlink" href="#how-it-works" title="Permalink to this headline"></a></h1>
 <p>The base API wraps around <a class="reference external" href="https://fastapi.tiangolo.com/">FastAPI</a> to define routes and logic, while <a class="reference external" href="https://www.uvicorn.org/">Uvicorn</a> is used to serve the APIs.</p>
-<p>First a <code class="docutils literal notranslate"><span class="pre">FastAPI()</span></code> object is created, and routes are added with <a class="reference external" href="https://github.com/tiangolo/fastapi/blob/bee35f5ae1fc58e7ab125427ad4287210e99d8b3/fastapi/routing.py#L479">.add_api_route()</a>. Then <code class="docutils literal notranslate"><span class="pre">uvicorn</span></code> is used to run the app with <a class="reference external" href="https://www.uvicorn.org/deployment/#running-programmatically">.run()</a>.</p>
+<p>First a <code class="docutils literal notranslate"><span class="pre">FastAPI()</span></code> object is created, and routes are added with <a class="reference external" href="https://github.com/tiangolo/fastapi/blob/bee35f5ae1fc58e7ab125427ad4287210e99d8b3/fastapi/routing.py#L479">.add_api_route()</a>, while API events are handled with <a class="reference external" href="https://github.com/encode/starlette/blob/6c556f6c5e4aa70173a84f6e6854390241231021/starlette/routing.py#L749">add_event_handler</a>. Then <code class="docutils literal notranslate"><span class="pre">uvicorn</span></code> is used to run the app with <a class="reference external" href="https://www.uvicorn.org/deployment/#running-programmatically">.run()</a>.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">fastapi</span> <span class="kn">import</span> <span class="n">FastAPI</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">uvicorn</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">helloworld</span><span class="p">():</span> <span class="k">return</span> <span class="s2">&quot;hello world!&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">app</span><span class="o">.</span><span class="n">add_api_route</span><span class="p">(</span><span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;GET&quot;</span><span class="p">],</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="n">helloworld</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">before_startup</span><span class="p">():</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This is run before startup.&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">app</span><span class="o">.</span><span class="n">add_event_handler</span><span class="p">(</span><span class="n">event_type</span><span class="o">=</span><span class="s2">&quot;startup&quot;</span><span class="p">,</span> <span class="n">func</span><span class="o">=</span><span class="n">before_startup</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">uvicorn</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="graphviz"><img src="_images/graphviz-7f1d5689347ba1639bc8b6ea12898f96e0d66ca3.png" alt="digraph methods {
+<div class="graphviz"><img src="_images/graphviz-8cbe18e8656ce86d183f966d75ffa9207df7fec4.png" alt="digraph methods {
 rankdir=TB;
 api[label=&quot;FastAPI&quot; URL=&quot;https://fastapi.tiangolo.com/&quot; style=filled];
 apimeth1[label=&quot;.add_api_route()&quot; shape=rect style=rounded URL=&quot;https://github.com/tiangolo/fastapi/blob/bee35f5ae1fc58e7ab125427ad4287210e99d8b3/fastapi/routing.py#L479&quot;];
+apimeth2[label=&quot;.add_event_handler()&quot; shape=rect style=rounded URL=&quot;https://github.com/encode/starlette/blob/6c556f6c5e4aa70173a84f6e6854390241231021/starlette/routing.py#L749&quot;];
 server[label=&quot;Uvicorn&quot; URL=&quot;https://www.uvicorn.org/&quot; style=filled];
 servermeth1[label=&quot;.run()&quot; shape=rect style=rounded URL=&quot;https://www.uvicorn.org/deployment/#running-programmatically&quot;];
 
@@ -151,14 +186,16 @@ subgraph cluster {
    style=rounded;
    {rank=min; api -&gt; server;}
    apimeth1 -&gt; api[arrowhead=none];
+   apimeth2 -&gt; api[arrowhead=none];
    servermeth1 -&gt; server[arrowhead=none];
 }
 }" usemap="#methods" class="graphviz" /></div>
 <map id="methods" name="methods">
-<area shape="poly" id="node1" href="https://fastapi.tiangolo.com/" title="FastAPI" alt="" coords="138,81,135,74,127,67,116,62,101,59,84,57,67,59,52,62,41,67,33,74,30,81,33,89,41,95,52,101,67,104,84,105,101,104,116,101,127,95,135,89"/>
-<area shape="poly" id="node3" href="https://www.uvicorn.org/" title="Uvicorn" alt="" coords="270,81,267,74,259,67,248,62,233,59,216,57,199,59,184,62,173,67,165,74,162,81,165,89,173,95,184,101,199,104,216,105,233,104,248,101,259,95,267,89"/>
+<area shape="poly" id="node1" href="https://fastapi.tiangolo.com/" title="FastAPI" alt="" coords="342,81,339,74,331,67,320,62,305,59,288,57,271,59,256,62,245,67,237,74,234,81,237,89,245,95,256,101,271,104,288,105,305,104,320,101,331,95,339,89"/>
+<area shape="poly" id="node4" href="https://www.uvicorn.org/" title="Uvicorn" alt="" coords="474,81,471,74,463,67,452,62,437,59,420,57,403,59,388,62,377,67,369,74,366,81,369,89,377,95,388,101,403,104,420,105,437,104,452,101,463,95,471,89"/>
 <area shape="rect" id="node2" href="https://github.com/tiangolo/fastapi/blob/bee35f5ae1fc58e7ab125427ad4287210e99d8b3/fastapi/routing.py#L479" title=".add_api_route()" alt="" coords="27,153,173,201"/>
-<area shape="rect" id="node4" href="https://www.uvicorn.org/deployment/#running-programmatically" title=".run()" alt="" coords="197,153,269,201"/>
+<area shape="rect" id="node3" href="https://github.com/encode/starlette/blob/6c556f6c5e4aa70173a84f6e6854390241231021/starlette/routing.py#L749" title=".add_event_handler()" alt="" coords="197,153,379,201"/>
+<area shape="rect" id="node5" href="https://www.uvicorn.org/deployment/#running-programmatically" title=".run()" alt="" coords="403,153,475,201"/>
 </map></section>
 <section id="api-reference">
 <h1>API Reference<a class="headerlink" href="#api-reference" title="Permalink to this headline"></a></h1>
@@ -251,7 +288,7 @@ subgraph cluster {
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>method</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – HTTP request method (GET, POST, PUT, DELETE, etc).</p></li>
 <li><p><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – Path (e.g. “/”) of the route for the API.</p></li>
-<li><p><strong>func</strong> (<em>func</em>) – Function to execute when route is reached.</p></li>
+<li><p><strong>func</strong> (<em>function</em>) – Function to execute when route is reached.</p></li>
 <li><p><strong>*args</strong> – Additional arguments passed to the <code class="docutils literal notranslate"><span class="pre">fastapi.FastAPI.add_route</span></code> method.</p></li>
 <li><p><strong>**kwargs</strong> – Additional arguments passed to the <code class="docutils literal notranslate"><span class="pre">fastapi.FastAPI.add_route</span></code> method.</p></li>
 </ul>
@@ -305,6 +342,83 @@ subgraph cluster {
 <span class="linenos">13</span><span class="p">]</span>
 <span class="linenos">14</span>
 <span class="linenos">15</span><span class="n">app</span><span class="o">.</span><span class="n">add_routes</span><span class="p">(</span><span class="n">routes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="msdss_base_api.core.API.on">
+<span class="sig-name descname"><span class="pre">on</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/msdss_base_api/core.html#API.on"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#msdss_base_api.core.API.on" title="Permalink to this definition"></a></dt>
+<dd><p>Decorator function for handling events.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>event</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – The event to handle. Currently supports <code class="docutils literal notranslate"><span class="pre">startup</span></code> (before starting) and <code class="docutils literal notranslate"><span class="pre">shutdown</span></code> (during shutdown).</p></li>
+<li><p><strong>*args</strong> – Additional arguments passed to the <code class="docutils literal notranslate"><span class="pre">fastapi.FastAPI.add_event_handler</span></code> method.</p></li>
+<li><p><strong>**kwargs</strong> – Additional arguments passed to the <code class="docutils literal notranslate"><span class="pre">fastapi.FastAPI.add_event_handler</span></code> method.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Author</p>
+<p>Richard Wen &lt;<a class="reference external" href="mailto:rrwen&#46;dev&#37;&#52;&#48;gmail&#46;com">rrwen<span>&#46;</span>dev<span>&#64;</span>gmail<span>&#46;</span>com</a>&gt;</p>
+<p class="rubric">Example</p>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">msdss_base_api.core</span> <span class="kn">import</span> <span class="n">API</span>
+<span class="linenos"> 2</span><span class="n">app</span> <span class="o">=</span> <span class="n">API</span><span class="p">()</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="nd">@app</span><span class="o">.</span><span class="n">on</span><span class="p">(</span><span class="s2">&quot;startup&quot;</span><span class="p">)</span>
+<span class="linenos"> 5</span><span class="k">def</span> <span class="nf">before_startup</span><span class="p">():</span>
+<span class="linenos"> 6</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This is run before startup.&quot;</span><span class="p">)</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="nd">@app</span><span class="o">.</span><span class="n">on</span><span class="p">(</span><span class="s2">&quot;shutdown&quot;</span><span class="p">)</span>
+<span class="linenos"> 9</span><span class="k">def</span> <span class="nf">during_shutdown</span><span class="p">():</span>
+<span class="linenos">10</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This is run during shutdown.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="msdss_base_api.core.API.on_event">
+<span class="sig-name descname"><span class="pre">on_event</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/msdss_base_api/core.html#API.on_event"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#msdss_base_api.core.API.on_event" title="Permalink to this definition"></a></dt>
+<dd><p>Handles API events using a custom function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>event</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – The event to handle. Currently supports <code class="docutils literal notranslate"><span class="pre">startup</span></code> (before starting) and <code class="docutils literal notranslate"><span class="pre">shutdown</span></code> (during shutdown).</p></li>
+<li><p><strong>func</strong> (<em>function</em>) – Function to execute when the event occurs.</p></li>
+<li><p><strong>*args</strong> – Additional arguments passed to the <code class="docutils literal notranslate"><span class="pre">fastapi.FastAPI.add_event_handler</span></code> method.</p></li>
+<li><p><strong>**kwargs</strong> – Additional arguments passed to the <code class="docutils literal notranslate"><span class="pre">fastapi.FastAPI.add_event_handler</span></code> method.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Author</p>
+<p>Richard Wen &lt;<a class="reference external" href="mailto:rrwen&#46;dev&#37;&#52;&#48;gmail&#46;com">rrwen<span>&#46;</span>dev<span>&#64;</span>gmail<span>&#46;</span>com</a>&gt;</p>
+<p class="rubric">Example</p>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">msdss_base_api.core</span> <span class="kn">import</span> <span class="n">API</span>
+<span class="linenos"> 2</span><span class="n">app</span> <span class="o">=</span> <span class="n">API</span><span class="p">()</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="k">def</span> <span class="nf">before_startup</span><span class="p">():</span>
+<span class="linenos"> 5</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This is run before startup.&quot;</span><span class="p">)</span>
+<span class="linenos"> 6</span><span class="n">app</span><span class="o">.</span><span class="n">on_event</span><span class="p">(</span><span class="s2">&quot;startup&quot;</span><span class="p">,</span> <span class="n">before_startup</span><span class="p">)</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="k">def</span> <span class="nf">during_shutdown</span><span class="p">():</span>
+<span class="linenos"> 9</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This is run during shutdown.&quot;</span><span class="p">)</span>
+<span class="linenos">10</span><span class="n">app</span><span class="o">.</span><span class="n">on_event</span><span class="p">(</span><span class="s2">&quot;shutdown&quot;</span><span class="p">,</span> <span class="n">during_shutdown</span><span class="p">)</span>
+<span class="linenos">11</span>
+<span class="linenos">12</span><span class="c1"># Run the app with app.start()</span>
+<span class="linenos">13</span><span class="c1"># API is hosted at http://localhost:8000</span>
+<span class="linenos">14</span><span class="c1"># app.start()</span>
 </pre></div>
 </div>
 </div>
