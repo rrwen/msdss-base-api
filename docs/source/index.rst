@@ -45,6 +45,10 @@ After installing the package, use in Python via methods:
       print("This is run during shutdown.")
    app.on_event("shutdown", during_shutdown)
 
+   # Run the app with app.start()
+   # API is hosted at http://localhost:8000
+   # app.start()
+
 or decorators:
 
 .. jupyter-execute::
