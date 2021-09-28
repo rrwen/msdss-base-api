@@ -99,7 +99,7 @@ In Windows:
 bin\rebuild_docs
 ```
 
-## Publishing to Python Package Index (PyPi)
+## Publishing to the Python Package Index (PyPi)
 
 When the package is ready, you can publish it to [PyPi](https://pypi.org/) so that it is publicly available and `pip` installable:
 
