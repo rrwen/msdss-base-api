@@ -173,6 +173,10 @@ class API:
             @app.on("shutdown")
             def during_shutdown():
                 print("This is run during shutdown.")
+
+            # Run the app with app.start()
+            # API is hosted at http://localhost:8000
+            # app.start()
         """
         def on_decorator(func):
             self.on_event(event=event, func=func, *args, **kwargs)
