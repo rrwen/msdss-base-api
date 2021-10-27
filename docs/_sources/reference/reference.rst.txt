@@ -1,7 +1,0 @@
-API Reference
-=============
-
-This section contains detailed class and function references for the ``msdss-base-api`` package.
-
-.. toctree:: 
-    reference_core

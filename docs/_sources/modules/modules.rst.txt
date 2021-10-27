@@ -1,8 +1,0 @@
-Modules Reference
-=================
-
-This section contains more detailed module references for the ``msdss-base-api`` package.
-
-.. toctree::
-    
-    modules_core

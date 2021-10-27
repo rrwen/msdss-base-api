@@ -1,6 +1,0 @@
-API Reference
-=============
-
-.. autoclass:: msdss_base_api.core.API
-    :members:
-    

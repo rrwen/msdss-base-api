@@ -1,7 +1,0 @@
-<map id="methods" name="methods">
-<area shape="poly" id="node1" href="https://fastapi.tiangolo.com/" title="FastAPI" alt="" coords="343,177,340,170,333,163,321,158,306,155,289,153,273,155,258,158,246,163,238,170,236,177,238,185,246,191,258,197,273,200,289,201,306,200,321,197,333,191,340,185"/>
-<area shape="poly" id="node4" href="https://www.uvicorn.org/" title="Uvicorn" alt="" coords="475,177,472,170,465,163,453,158,438,155,421,153,405,155,390,158,378,163,370,170,368,177,370,185,378,191,390,197,405,200,421,201,438,200,453,197,465,191,472,185"/>
-<area shape="rect" id="node2" href="https://github.com/tiangolo/fastapi/blob/bee35f5ae1fc58e7ab125427ad4287210e99d8b3/fastapi/routing.py#L479" title=".add_api_route()" alt="" coords="233,57,378,105"/>
-<area shape="rect" id="node3" href="https://github.com/encode/starlette/blob/6c556f6c5e4aa70173a84f6e6854390241231021/starlette/routing.py#L749" title=".add_event_handler()" alt="" coords="27,57,208,105"/>
-<area shape="rect" id="node5" href="https://www.uvicorn.org/deployment/#running-programmatically" title=".run()" alt="" coords="403,57,475,105"/>
-</map>

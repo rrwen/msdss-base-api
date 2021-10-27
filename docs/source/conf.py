@@ -22,13 +22,12 @@ from datetime import datetime
 import os
 import sys
 sys.path.insert(0, os.path.abspath('../../msdss_base_api'))
-import sphinx_rtd_theme
 
 author = 'Richard Wen rrwen.dev@gmail.com'
 project = 'msdss_base_api'
 description = 'Base API for the Modular Spatial Decision Support Systems (MSDSS) framework'
 copyright = str(datetime.now().year) + ', ' + 'Richard Wen'
-version = '0.0.1'
+version = '0.0.2'
 release = version
 
 # -- General configuration ------------------------------------------------
@@ -46,7 +45,6 @@ extensions = [
     'sphinx.ext.githubpages',
     'sphinx.ext.napoleon',
     'sphinx.ext.intersphinx',
-    'sphinx_rtd_theme',
     'sphinx.ext.autosectionlabel',
     'sphinx.ext.graphviz',
     'jupyter_sphinx.execute',
@@ -94,16 +92,24 @@ todo_include_todos = False
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'sphinx_rtd_theme'
+html_theme = 'sphinx_material'
+html_logo = 'logo.svg'
+html_title = version
+html_sidebars = {
+    "**": ["globaltoc.html", "localtoc.html", "searchbox.html"]
+}
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
 #
 html_theme_options = {
-    'collapse_navigation': False,
-    'navigation_depth': -1,
-    'sticky_navigation': True
+    'nav_title': 'msdss-base-api',
+    'base_url': 'https://rrwen.github.io/msdss-base-api',
+    'color_primary': 'indigo',
+    'color_accent': 'light-blue',
+    'repo_url': 'https://github.com/rrwen/msdss-base-api/',
+    'repo_name': 'msdss-base-api'
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,
