@@ -10,6 +10,7 @@ After installing the package, use in Python via methods:
 
    # Add GET route
    def hello_world():
+      app.logger.info('/ accessed!')
       return "hello world!"
    app.add_route("GET", "/", hello_world)
 
@@ -37,6 +38,7 @@ or decorators:
    # Add GET route
    @app.add("GET", "/two")
    def hello_world2():
+      app.logger.info('/two accessed!')
       return "hello world 2!"
 
    # Handle startup event

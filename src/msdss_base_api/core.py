@@ -1,3 +1,4 @@
+import logging
 import uvicorn
 
 from fastapi import FastAPI
@@ -10,11 +11,15 @@ class API:
     ----------
     api : :class:`fastapi:fastapi.FastAPI`
         API object to use for creating routes.
+    logger : :class:`logging.Logger`
+        Object for logging. Instantiated with :func:`logging.getLogger`.
 
     Attributes
     ----------
     api : :class:`fastapi.FastAPI`
         API object passed from parameter ``api``.
+    logger : :class:`logging.Logger`
+        Object for logging from parameter ``logger``.
 
     Author
     ------
@@ -29,20 +34,23 @@ class API:
 
         # Add route via function
         def hello_world():
+            app.logger.info('/ accessed!')
             return "hello world!"
         app.add_route("GET", "/", hello_world)
 
         # Add route via decorator
         @app.add("GET", "/two")
         def hello_world2():
+            app.logger.info('/two accessed!')
             return "hello world 2!"
 
         # Run the app with app.start()
         # API is hosted at http://localhost:8000
         # app.start()
     """
-    def __init__(self, api=FastAPI()):
+    def __init__(self, api=FastAPI(), logger=logging.getLogger('uvicorn.error')):
         self.app = api
+        self.logger = logger
 
     def add(self, method, path, *args, **kwargs):
         """
