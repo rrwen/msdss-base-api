@@ -1,7 +1,7 @@
 import logging
 import uvicorn
 
-from fastapi import FastAPI
+from fastapi import FastAPI, APIRouter
 
 class API:
     """
@@ -49,7 +49,7 @@ class API:
         # app.start()
     """
     def __init__(self, api=FastAPI(), logger=logging.getLogger('uvicorn.error')):
-        self.app = api
+        self.api = api
         self.logger = logger
 
     def add(self, method, path, *args, **kwargs):
@@ -63,7 +63,7 @@ class API:
         path : str
             Path (e.g. "/") of the route for the API.
         *args, **kwargs
-            Additional arguments passed to the ``fastapi.FastAPI.add_route`` method.
+            Additional arguments passed to the :meth:`fastapi:fastapi.FastAPI.add_route` method.
 
         Author
         ------
@@ -97,7 +97,7 @@ class API:
         func : function
             Function to execute when route is reached.
         *args, **kwargs
-            Additional arguments passed to the ``fastapi.FastAPI.add_route`` method.
+            Additional arguments passed to the :meth:`fastapi:fastapi.FastAPI.add_route` method.
 
         Author
         ------
@@ -114,7 +114,49 @@ class API:
                 return "hello world!"
             app.add_route("GET", "/", hello_world)
         """
-        self.app.add_api_route(methods=[method], path=path, endpoint=func, *args, **kwargs)
+        self.api.add_api_route(methods=[method], path=path, endpoint=func, *args, **kwargs)
+
+    def add_router(self, router, *args, **kwargs):
+        """
+        Add a router to the API.
+
+        Parameters
+        ----------
+        router : :class:`fastapi:fastapi.routing.APIRouter`
+            FastAPI router object to add.
+        *args, **kwargs
+            Additional arguments passed to the meth:`fastapi:fastapi.FastAPI.include_router` method. See `FastAPI bigger apps <https://fastapi.tiangolo.com/tutorial/bigger-applications/>`_
+
+        Author
+        ------
+        Richard Wen <rrwen.dev@gmail.com>
+
+        Example
+        -------
+        .. jupyter-execute::
+
+            from msdss_base_api.core import API
+            app = API()
+
+            # Create the router
+            router = app.create_router(
+                prefix='/helloworld',
+                tags=['helloworld']
+            )
+
+            # Add a route
+            @router.get('/start')
+            def hello_world():
+                return "hello world!"
+
+            # Add router to app
+            app.add_router(router)
+
+            # Run the app with app.start()
+            # API is hosted at http://localhost:8000
+            # app.start()
+        """
+        self.api.include_router(router=router, *args, **kwargs)
 
     def add_routes(self, routes):
         """
@@ -152,6 +194,40 @@ class API:
         for r in routes:
             self.add_route(**r)
 
+    def create_router(self, *args, **kwargs):
+        """
+        Create a router.
+
+        Parameters
+        ----------
+        *args, **kwargs
+            Additional arguments passed to the class:`fastapi:fastapi.routing.APIRouter` class. See `FastAPI bigger apps <https://fastapi.tiangolo.com/tutorial/bigger-applications/>`_
+        
+        Return
+        ------
+        :class:`fastapi:fastapi.routing.APIRouter`
+            A router object used for organizing larger applications and for modularity.
+
+        Author
+        ------
+        Richard Wen <rrwen.dev@gmail.com>
+
+        Example
+        -------
+        .. jupyter-execute::
+
+            from msdss_base_api.core import API
+            app = API()
+
+            # Create the router
+            router = app.create_router(
+                prefix='/helloworld',
+                tags=['helloworld']
+            )
+        """
+        out = APIRouter(*args, **kwargs)
+        return out
+
     def on(self, event, *args, **kwargs):
         """
         Decorator function for handling events.
@@ -161,7 +237,7 @@ class API:
         event : str
             The event to handle. Currently supports ``startup`` (before starting) and ``shutdown`` (during shutdown).
         *args, **kwargs
-            Additional arguments passed to the ``fastapi.FastAPI.add_event_handler`` method.
+            Additional arguments passed to the :meth:`fastapi:fastapi.FastAPI.add_event_handler` method.
 
         Author
         ------
@@ -201,7 +277,7 @@ class API:
         func : function
             Function to execute when the event occurs.
         *args, **kwargs
-            Additional arguments passed to the ``fastapi.FastAPI.add_event_handler`` method.
+            Additional arguments passed to the :meth:`fastapi:fastapi.FastAPI.add_event_handler` method.
 
         Author
         ------
@@ -226,7 +302,7 @@ class API:
             # API is hosted at http://localhost:8000
             # app.start()
         """
-        self.app.add_event_handler(event_type=event, func=func, *args, **kwargs)
+        self.api.add_event_handler(event_type=event, func=func, *args, **kwargs)
 
     def start(self, host="127.0.0.1", port=8000, log_level="info", *args, **kwargs):
         """
@@ -262,4 +338,4 @@ class API:
             # API is hosted at http://localhost:8000
             # app.start()
         """
-        uvicorn.run(self.app, host=host, port=port, log_level="info", *args, **kwargs)
+        uvicorn.run(self.api, host=host, port=port, log_level="info", *args, **kwargs)

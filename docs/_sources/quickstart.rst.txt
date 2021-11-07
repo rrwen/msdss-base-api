@@ -54,3 +54,34 @@ or decorators:
    # Run the app with app.start()
    # API is hosted at http://localhost:8000
    # app.start()
+
+Routers can also be easily created and added:
+
+.. jupyter-execute::
+
+   from msdss_base_api.core import API
+   app = API()
+
+   # Add GET route
+   @app.add("GET", "/two")
+   def hello_world2():
+      app.logger.info('/two accessed!')
+      return "hello world 2!"
+
+   # Create the router
+   router = app.create_router(
+         prefix='/helloworld',
+         tags=['helloworld']
+   )
+
+   # Add a route
+   @router.get('/start')
+   def hello_world():
+         return "hello world!"
+
+   # Add router to app
+   app.add_router(router)
+
+   # Run the app with app.start()
+   # API is hosted at http://localhost:8000
+   # app.start()
