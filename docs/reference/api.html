@@ -261,6 +261,12 @@
         </li>
         <li class="md-nav__item"><a href="#add-route" class="md-nav__link">add_route</a>
         </li>
+        <li class="md-nav__item"><a href="#add-routes" class="md-nav__link">add_routes</a>
+        </li>
+        <li class="md-nav__item"><a href="#add-router" class="md-nav__link">add_router</a>
+        </li>
+        <li class="md-nav__item"><a href="#create-router" class="md-nav__link">create_router</a>
+        </li>
         <li class="md-nav__item"><a href="#on" class="md-nav__link">on</a>
         </li>
         <li class="md-nav__item"><a href="#on-event" class="md-nav__link">on_event</a>
@@ -410,6 +416,137 @@
 <span class="linenos">4</span><span class="k">def</span> <span class="nf">hello_world</span><span class="p">():</span>
 <span class="linenos">5</span>    <span class="k">return</span> <span class="s2">"hello world!"</span>
 <span class="linenos">6</span><span class="n">app</span><span class="o">.</span><span class="n">add_route</span><span class="p">(</span><span class="s2">"GET"</span><span class="p">,</span> <span class="s2">"/"</span><span class="p">,</span> <span class="n">hello_world</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
+</dd></dl>
+</section>
+<section id="add-routes">
+<h2 id="add-routes">add_routes<a class="headerlink" href="#add-routes" title="Permalink to this headline">¶</a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="msdss_base_api.core.API.add_routes">
+<span class="sig-prename descclassname"><span class="pre">API.</span></span><span class="sig-name descname"><span class="pre">add_routes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">routes</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/msdss_base_api/core.html#API.add_routes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#msdss_base_api.core.API.add_routes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add multiple routes using a dict to the API.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>routes</strong> (<em>list of dict</em>) – A list of dictionaries containing routes with the same parameter names as <code class="xref py py-meth docutils literal notranslate"><span class="pre">core.API.add_route()</span></code>.</p>
+</dd>
+</dl>
+<p class="rubric">Author</p>
+<p>Richard Wen &lt;<a class="reference external" href="mailto:rrwen.dev%40gmail.com">rrwen<span>.</span>dev<span>@</span>gmail<span>.</span>com</a>&gt;</p>
+<p class="rubric">Example</p>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">msdss_base_api.core</span> <span class="kn">import</span> <span class="n">API</span>
+<span class="linenos"> 2</span><span class="n">app</span> <span class="o">=</span> <span class="n">API</span><span class="p">()</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="k">def</span> <span class="nf">hello_world</span><span class="p">():</span>
+<span class="linenos"> 5</span>    <span class="k">return</span> <span class="s2">"hello world!"</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="k">def</span> <span class="nf">hello_world2</span><span class="p">():</span>
+<span class="linenos"> 8</span>    <span class="k">return</span> <span class="s2">"hello world 2!"</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="n">routes</span> <span class="o">=</span> <span class="p">[</span>
+<span class="linenos">11</span>    <span class="p">{</span><span class="s2">"method"</span><span class="p">:</span> <span class="s2">"GET"</span><span class="p">,</span> <span class="s2">"path"</span><span class="p">:</span> <span class="s2">"/"</span><span class="p">,</span> <span class="s2">"func"</span><span class="p">:</span> <span class="n">hello_world</span><span class="p">},</span>
+<span class="linenos">12</span>    <span class="p">{</span><span class="s2">"method"</span><span class="p">:</span> <span class="s2">"GET"</span><span class="p">,</span> <span class="s2">"path"</span><span class="p">:</span> <span class="s2">"/two"</span><span class="p">,</span> <span class="s2">"func"</span><span class="p">:</span> <span class="n">hello_world2</span><span class="p">},</span>
+<span class="linenos">13</span><span class="p">]</span>
+<span class="linenos">14</span>
+<span class="linenos">15</span><span class="n">app</span><span class="o">.</span><span class="n">add_routes</span><span class="p">(</span><span class="n">routes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
+</dd></dl>
+</section>
+<section id="add-router">
+<h2 id="add-router">add_router<a class="headerlink" href="#add-router" title="Permalink to this headline">¶</a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="msdss_base_api.core.API.add_router">
+<span class="sig-prename descclassname"><span class="pre">API.</span></span><span class="sig-name descname"><span class="pre">add_router</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">router</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/msdss_base_api/core.html#API.add_router"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#msdss_base_api.core.API.add_router" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a router to the API.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>router</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">fastapi:fastapi.routing.APIRouter</span></code>) – FastAPI router object to add.</p></li>
+<li><p><strong>*args</strong> – Additional arguments passed to the meth:<cite>fastapi:fastapi.FastAPI.include_router</cite> method. See <a class="reference external" href="https://fastapi.tiangolo.com/tutorial/bigger-applications/">FastAPI bigger apps</a></p></li>
+<li><p><strong>**kwargs</strong> – <p>Additional arguments passed to the meth:<cite>fastapi:fastapi.FastAPI.include_router</cite> method. See <a class="reference external" href="https://fastapi.tiangolo.com/tutorial/bigger-applications/">FastAPI bigger apps</a></p>
+</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Author</p>
+<p>Richard Wen &lt;<a class="reference external" href="mailto:rrwen.dev%40gmail.com">rrwen<span>.</span>dev<span>@</span>gmail<span>.</span>com</a>&gt;</p>
+<p class="rubric">Example</p>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">msdss_base_api.core</span> <span class="kn">import</span> <span class="n">API</span>
+<span class="linenos"> 2</span><span class="n">app</span> <span class="o">=</span> <span class="n">API</span><span class="p">()</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="c1"># Create the router</span>
+<span class="linenos"> 5</span><span class="n">router</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">create_router</span><span class="p">(</span>
+<span class="linenos"> 6</span>    <span class="n">prefix</span><span class="o">=</span><span class="s1">'/helloworld'</span><span class="p">,</span>
+<span class="linenos"> 7</span>    <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="s1">'helloworld'</span><span class="p">]</span>
+<span class="linenos"> 8</span><span class="p">)</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="c1"># Add a route</span>
+<span class="linenos">11</span><span class="nd">@router</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'/start'</span><span class="p">)</span>
+<span class="linenos">12</span><span class="k">def</span> <span class="nf">hello_world</span><span class="p">():</span>
+<span class="linenos">13</span>    <span class="k">return</span> <span class="s2">"hello world!"</span>
+<span class="linenos">14</span>
+<span class="linenos">15</span><span class="c1"># Add router to app</span>
+<span class="linenos">16</span><span class="n">app</span><span class="o">.</span><span class="n">add_router</span><span class="p">(</span><span class="n">router</span><span class="p">)</span>
+<span class="linenos">17</span>
+<span class="linenos">18</span><span class="c1"># Run the app with app.start()</span>
+<span class="linenos">19</span><span class="c1"># API is hosted at http://localhost:8000</span>
+<span class="linenos">20</span><span class="c1"># app.start()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
+</dd></dl>
+</section>
+<section id="create-router">
+<h2 id="create-router">create_router<a class="headerlink" href="#create-router" title="Permalink to this headline">¶</a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="msdss_base_api.core.API.create_router">
+<span class="sig-prename descclassname"><span class="pre">API.</span></span><span class="sig-name descname"><span class="pre">create_router</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/msdss_base_api/core.html#API.create_router"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#msdss_base_api.core.API.create_router" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a router.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>*args</strong> – <p>Additional arguments passed to the class:<cite>fastapi:fastapi.routing.APIRouter</cite> class. See <a class="reference external" href="https://fastapi.tiangolo.com/tutorial/bigger-applications/">FastAPI bigger apps</a></p>
+</p></li>
+<li><p><strong>**kwargs</strong> – <p>Additional arguments passed to the class:<cite>fastapi:fastapi.routing.APIRouter</cite> class. See <a class="reference external" href="https://fastapi.tiangolo.com/tutorial/bigger-applications/">FastAPI bigger apps</a></p>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A router object used for organizing larger applications and for modularity.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">fastapi:fastapi.routing.APIRouter</span></code></p>
+</dd>
+</dl>
+<p class="rubric">Author</p>
+<p>Richard Wen &lt;<a class="reference external" href="mailto:rrwen.dev%40gmail.com">rrwen<span>.</span>dev<span>@</span>gmail<span>.</span>com</a>&gt;</p>
+<p class="rubric">Example</p>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">msdss_base_api.core</span> <span class="kn">import</span> <span class="n">API</span>
+<span class="linenos">2</span><span class="n">app</span> <span class="o">=</span> <span class="n">API</span><span class="p">()</span>
+<span class="linenos">3</span>
+<span class="linenos">4</span><span class="c1"># Create the router</span>
+<span class="linenos">5</span><span class="n">router</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">create_router</span><span class="p">(</span>
+<span class="linenos">6</span>    <span class="n">prefix</span><span class="o">=</span><span class="s1">'/helloworld'</span><span class="p">,</span>
+<span class="linenos">7</span>    <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="s1">'helloworld'</span><span class="p">]</span>
+<span class="linenos">8</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

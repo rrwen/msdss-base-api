@@ -13,6 +13,21 @@ add_route
 
 .. automethod:: msdss_base_api.core.API.add_route
 
+add_routes
+----------
+
+.. automethod:: msdss_base_api.core.API.add_routes
+
+add_router
+----------
+
+.. automethod:: msdss_base_api.core.API.add_router
+
+create_router
+-------------
+
+.. automethod:: msdss_base_api.core.API.create_router
+
 on
 ---
 
