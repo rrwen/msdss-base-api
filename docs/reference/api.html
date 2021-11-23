@@ -47,7 +47,7 @@
   
   
   
-    <title>API &#8212; 0.0.4</title>
+    <title>API &#8212; 0.0.5</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/material.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -89,11 +89,11 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex navheader">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="../index.html" title="0.0.4"
+        <a href="../index.html" title="0.0.5"
            class="md-header-nav__button md-logo">
           
               <img src="../_static/logo.svg" height="26"
-                   alt="0.0.4 logo">
+                   alt="0.0.5 logo">
           
         </a>
       </div>
@@ -176,7 +176,7 @@
   <nav class="md-tabs" data-md-component="tabs">
     <div class="md-tabs__inner md-grid">
       <ul class="md-tabs__list">
-          <li class="md-tabs__item"><a href="../index.html" class="md-tabs__link">0.0.4</a></li>
+          <li class="md-tabs__item"><a href="../index.html" class="md-tabs__link">0.0.5</a></li>
           <li class="md-tabs__item"><a href="index.html" class="md-tabs__link">API Reference</a></li>
       </ul>
     </div>
@@ -189,13 +189,13 @@
               <div class="md-sidebar__inner">
                 <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="../index.html" title="0.0.4" class="md-nav__button md-logo">
+    <a href="../index.html" title="0.0.5" class="md-nav__button md-logo">
       
         <img src="../_static/logo.svg" alt=" logo" width="48" height="48">
       
     </a>
     <a href="../index.html"
-       title="0.0.4">msdss-base-api</a>
+       title="0.0.5">msdss-base-api</a>
   </label>
     <div class="md-nav__source">
       <a href="https://github.com/rrwen/msdss-base-api/" title="Go to repository" class="md-source" data-md-source="github">
@@ -296,7 +296,7 @@
 <h1 id="reference-api--page-root">API<a class="headerlink" href="#reference-api--page-root" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="msdss_base_api.core.API">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">msdss_base_api.core.</span></span><span class="sig-name descname"><span class="pre">API</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">api=&lt;fastapi.applications.FastAPI</span> <span class="pre">object&gt;</span></em>, <em class="sig-param"><span class="pre">logger=&lt;Logger</span> <span class="pre">uvicorn.error</span> <span class="pre">(WARNING)&gt;</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/msdss_base_api/core.html#API"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#msdss_base_api.core.API" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">msdss_base_api.core.</span></span><span class="sig-name descname"><span class="pre">API</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">api=&lt;fastapi.applications.FastAPI</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger=&lt;Logger</span> <span class="pre">uvicorn.error</span> <span class="pre">(WARNING)&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/msdss_base_api/core.html#API"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#msdss_base_api.core.API" title="Permalink to this definition">¶</a></dt>
 <dd><p>Base class for mSDSS related APIs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -323,6 +323,22 @@
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/logging.html#logging.Logger" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">logging.Logger</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="msdss_base_api.core.API.routers">
+<span class="sig-name descname"><span class="pre">routers</span></span><a class="headerlink" href="#msdss_base_api.core.API.routers" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of dictionaries, where each dictionary consists of:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">router</span></code> (<code class="xref py py-class docutils literal notranslate"><span class="pre">fastapi:fastapi.routing.APIRouter</span></code>): FastAPI router object from calling <code class="xref py py-meth docutils literal notranslate"><span class="pre">msdss_base_api.core.add_router()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">args</span></code> (tuple): positional arguments passed to the FastAPI router from calling <code class="xref py py-meth docutils literal notranslate"><span class="pre">msdss_base_api.core.add_router()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kwargs</span></code> (dict): keyword arguments passed to the FastAPI router from calling <code class="xref py py-meth docutils literal notranslate"><span class="pre">msdss_base_api.core.add_router()</span></code></p></li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">router</span></code> and <code class="docutils literal notranslate"><span class="pre">*args,</span> <span class="pre">**kwargs</span></code> can be used to reproduce the added router to another app.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)">list</a>(<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.10)">dict</a>)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -488,12 +504,12 @@
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">msdss_base_api.core</span> <span class="kn">import</span> <span class="n">API</span>
+<span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
 <span class="n">app</span> <span class="o">=</span> <span class="n">API</span><span class="p">()</span>
 
 <span class="c1"># Create the router</span>
 <span class="n">router</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">create_router</span><span class="p">(</span>
-    <span class="n">prefix</span><span class="o">=</span><span class="s1">'/helloworld'</span><span class="p">,</span>
-    <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="s1">'helloworld'</span><span class="p">]</span>
+    <span class="n">prefix</span><span class="o">=</span><span class="s1">'/helloworld'</span>
 <span class="p">)</span>
 
 <span class="c1"># Add a route</span>
@@ -502,7 +518,10 @@
     <span class="k">return</span> <span class="s2">"hello world!"</span>
 
 <span class="c1"># Add router to app</span>
-<span class="n">app</span><span class="o">.</span><span class="n">add_router</span><span class="p">(</span><span class="n">router</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">add_router</span><span class="p">(</span><span class="n">router</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="s1">'helloworld'</span><span class="p">])</span>
+
+<span class="c1"># Check router arguments</span>
+<span class="n">pprint</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">routers</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 
 <span class="c1"># Run the app with app.start()</span>
 <span class="c1"># API is hosted at http://localhost:8000</span>
@@ -511,6 +530,11 @@
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>{'args': (),
+ 'kwargs': {'tags': ['helloworld']},
+ 'router': &lt;fastapi.routing.APIRouter object at 0x7fef91ca97f0&gt;}
+</pre></div>
+</div>
 </div>
 </div>
 </dd></dl>
@@ -721,7 +745,7 @@
               
           </div>
             Created using
-            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.3.0.
              and
             <a href="https://github.com/bashtage/sphinx-material/">Material for
               Sphinx</a>

@@ -20,6 +20,14 @@ class API:
         API object passed from parameter ``api``.
     logger : :class:`logging.Logger`
         Object for logging from parameter ``logger``.
+    routers : list(dict)
+        List of dictionaries, where each dictionary consists of:
+
+        * ``router`` (:class:`fastapi:fastapi.routing.APIRouter`): FastAPI router object from calling :meth:`msdss_base_api.core.add_router`
+        * ``args`` (tuple): positional arguments passed to the FastAPI router from calling :meth:`msdss_base_api.core.add_router`
+        * ``kwargs`` (dict): keyword arguments passed to the FastAPI router from calling :meth:`msdss_base_api.core.add_router`
+
+        The ``router`` and ``*args, **kwargs`` can be used to reproduce the added router to another app.
 
     Author
     ------
@@ -48,9 +56,10 @@ class API:
         # API is hosted at http://localhost:8000
         # app.start()
     """
-    def __init__(self, api=FastAPI(), logger=logging.getLogger('uvicorn.error')):
+    def __init__(self, api=FastAPI(title='MSDSS Base API', version='0.0.5'), logger=logging.getLogger('uvicorn.error')):
         self.api = api
         self.logger = logger
+        self.routers = []
 
     def add(self, method, path, *args, **kwargs):
         """
@@ -136,12 +145,12 @@ class API:
         .. jupyter-execute::
 
             from msdss_base_api.core import API
+            from pprint import pprint
             app = API()
 
             # Create the router
             router = app.create_router(
-                prefix='/helloworld',
-                tags=['helloworld']
+                prefix='/helloworld'
             )
 
             # Add a route
@@ -150,12 +159,18 @@ class API:
                 return "hello world!"
 
             # Add router to app
-            app.add_router(router)
+            app.add_router(router, tags=['helloworld'])
+
+            # Check router arguments
+            pprint(app.routers[0])
 
             # Run the app with app.start()
             # API is hosted at http://localhost:8000
             # app.start()
         """
+        arguments = locals()
+        del arguments['self']
+        self.routers.append(arguments)
         self.api.include_router(router=router, *args, **kwargs)
 
     def add_routes(self, routes):
