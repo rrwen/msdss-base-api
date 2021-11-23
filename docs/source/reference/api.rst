@@ -3,20 +3,35 @@ API
 
 .. autoclass:: msdss_base_api.core.API
 
-add
----
+add_apps
+--------
 
-.. automethod:: msdss_base_api.core.API.add
+.. automethod:: msdss_base_api.core.API.add_apps
+
+add_app_events
+--------------
+
+.. automethod:: msdss_base_api.core.API.add_app_events
+
+add_app_routes
+--------------
+
+.. automethod:: msdss_base_api.core.API.add_app_routes
+
+add_app_routers
+---------------
+
+.. automethod:: msdss_base_api.core.API.add_app_routers
+
+add_event
+---------
+
+.. automethod:: msdss_base_api.core.API.add_event
 
 add_route
 ---------
 
 .. automethod:: msdss_base_api.core.API.add_route
-
-add_routes
-----------
-
-.. automethod:: msdss_base_api.core.API.add_routes
 
 add_router
 ----------
@@ -28,15 +43,15 @@ create_router
 
 .. automethod:: msdss_base_api.core.API.create_router
 
-on
----
+event
+-----
 
-.. automethod:: msdss_base_api.core.API.on
+.. automethod:: msdss_base_api.core.API.event
 
-on_event
---------
+route
+-----
 
-.. automethod:: msdss_base_api.core.API.on_event
+.. automethod:: msdss_base_api.core.API.route
 
 start
 -----

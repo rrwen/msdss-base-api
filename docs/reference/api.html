@@ -47,7 +47,7 @@
   
   
   
-    <title>API &#8212; 0.0.5</title>
+    <title>API &#8212; 0.1.0</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/material.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -89,11 +89,11 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex navheader">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="../index.html" title="0.0.5"
+        <a href="../index.html" title="0.1.0"
            class="md-header-nav__button md-logo">
           
               <img src="../_static/logo.svg" height="26"
-                   alt="0.0.5 logo">
+                   alt="0.1.0 logo">
           
         </a>
       </div>
@@ -176,7 +176,7 @@
   <nav class="md-tabs" data-md-component="tabs">
     <div class="md-tabs__inner md-grid">
       <ul class="md-tabs__list">
-          <li class="md-tabs__item"><a href="../index.html" class="md-tabs__link">0.0.5</a></li>
+          <li class="md-tabs__item"><a href="../index.html" class="md-tabs__link">0.1.0</a></li>
           <li class="md-tabs__item"><a href="index.html" class="md-tabs__link">API Reference</a></li>
       </ul>
     </div>
@@ -189,13 +189,13 @@
               <div class="md-sidebar__inner">
                 <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="../index.html" title="0.0.5" class="md-nav__button md-logo">
+    <a href="../index.html" title="0.1.0" class="md-nav__button md-logo">
       
         <img src="../_static/logo.svg" alt=" logo" width="48" height="48">
       
     </a>
     <a href="../index.html"
-       title="0.0.5">msdss-base-api</a>
+       title="0.1.0">msdss-base-api</a>
   </label>
     <div class="md-nav__source">
       <a href="https://github.com/rrwen/msdss-base-api/" title="Go to repository" class="md-source" data-md-source="github">
@@ -233,6 +233,13 @@
     <li class="md-nav__item">
     
     
+      <a href="../usage.html" class="md-nav__link">Usage</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
       <a href="../howitworks.html" class="md-nav__link">How it Works</a>
       
     
@@ -260,19 +267,25 @@
   <ul class="md-nav__list" data-md-scrollfix="">
         <li class="md-nav__item"><a href="#reference-api--page-root" class="md-nav__link">API</a><nav class="md-nav">
               <ul class="md-nav__list">
-        <li class="md-nav__item"><a href="#add" class="md-nav__link">add</a>
+        <li class="md-nav__item"><a href="#add-apps" class="md-nav__link">add_apps</a>
+        </li>
+        <li class="md-nav__item"><a href="#add-app-events" class="md-nav__link">add_app_events</a>
+        </li>
+        <li class="md-nav__item"><a href="#add-app-routes" class="md-nav__link">add_app_routes</a>
+        </li>
+        <li class="md-nav__item"><a href="#add-app-routers" class="md-nav__link">add_app_routers</a>
+        </li>
+        <li class="md-nav__item"><a href="#add-event" class="md-nav__link">add_event</a>
         </li>
         <li class="md-nav__item"><a href="#add-route" class="md-nav__link">add_route</a>
-        </li>
-        <li class="md-nav__item"><a href="#add-routes" class="md-nav__link">add_routes</a>
         </li>
         <li class="md-nav__item"><a href="#add-router" class="md-nav__link">add_router</a>
         </li>
         <li class="md-nav__item"><a href="#create-router" class="md-nav__link">create_router</a>
         </li>
-        <li class="md-nav__item"><a href="#on" class="md-nav__link">on</a>
+        <li class="md-nav__item"><a href="#event" class="md-nav__link">event</a>
         </li>
-        <li class="md-nav__item"><a href="#on-event" class="md-nav__link">on_event</a>
+        <li class="md-nav__item"><a href="#route" class="md-nav__link">route</a>
         </li>
         <li class="md-nav__item"><a href="#start" class="md-nav__link">start</a>
         </li></ul>
@@ -327,15 +340,48 @@
 </dl>
 </dd></dl>
 <dl class="py attribute">
+<dt class="sig sig-object py" id="msdss_base_api.core.API.routes">
+<span class="sig-name descname"><span class="pre">routes</span></span><a class="headerlink" href="#msdss_base_api.core.API.routes" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of dictionaries, where each dictionary represents arguments for adding a route:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">method</span></code> (str): request method for route</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">path</span></code> (str): path for route</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">func</span></code> (func): function for route</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">args</span></code> (tuple): positional arguments passed to the FastAPI router from calling <code class="xref py py-meth docutils literal notranslate"><span class="pre">msdss_base_api.core.add_route()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kwargs</span></code> (dict): keyword arguments passed to the FastAPI router from calling <code class="xref py py-meth docutils literal notranslate"><span class="pre">msdss_base_api.core.add_route()</span></code></p></li>
+</ul>
+<p>These arguments can be used to reproduce the added route to another app.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)">list</a>(<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.10)">dict</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
 <dt class="sig sig-object py" id="msdss_base_api.core.API.routers">
 <span class="sig-name descname"><span class="pre">routers</span></span><a class="headerlink" href="#msdss_base_api.core.API.routers" title="Permalink to this definition">¶</a></dt>
-<dd><p>List of dictionaries, where each dictionary consists of:</p>
+<dd><p>List of dictionaries, where each dictionary represents arguments for adding a router:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">router</span></code> (<code class="xref py py-class docutils literal notranslate"><span class="pre">fastapi:fastapi.routing.APIRouter</span></code>): FastAPI router object from calling <code class="xref py py-meth docutils literal notranslate"><span class="pre">msdss_base_api.core.add_router()</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">args</span></code> (tuple): positional arguments passed to the FastAPI router from calling <code class="xref py py-meth docutils literal notranslate"><span class="pre">msdss_base_api.core.add_router()</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">kwargs</span></code> (dict): keyword arguments passed to the FastAPI router from calling <code class="xref py py-meth docutils literal notranslate"><span class="pre">msdss_base_api.core.add_router()</span></code></p></li>
 </ul>
-<p>The <code class="docutils literal notranslate"><span class="pre">router</span></code> and <code class="docutils literal notranslate"><span class="pre">*args,</span> <span class="pre">**kwargs</span></code> can be used to reproduce the added router to another app.</p>
+<p>These arguments can be used to reproduce the added router to another app.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)">list</a>(<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.10)">dict</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="msdss_base_api.core.API.events">
+<span class="sig-name descname"><span class="pre">events</span></span><a class="headerlink" href="#msdss_base_api.core.API.events" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of dictionaries, where each dictionary represents arguments for adding an event:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">event</span></code> (str): the event type to handle</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">func</span></code> (func): the function to call for the event</p></li>
+</ul>
+<p>These arguments can be used to reproduce the added event to another app.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)">list</a>(<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.10)">dict</a>)</p>
@@ -357,7 +403,7 @@
 <span class="n">app</span><span class="o">.</span><span class="n">add_route</span><span class="p">(</span><span class="s2">"GET"</span><span class="p">,</span> <span class="s2">"/"</span><span class="p">,</span> <span class="n">hello_world</span><span class="p">)</span>
 
 <span class="c1"># Add route via decorator</span>
-<span class="nd">@app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"GET"</span><span class="p">,</span> <span class="s2">"/two"</span><span class="p">)</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">"GET"</span><span class="p">,</span> <span class="s2">"/two"</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">hello_world2</span><span class="p">():</span>
     <span class="n">app</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">'/two accessed!'</span><span class="p">)</span>
     <span class="k">return</span> <span class="s2">"hello world 2!"</span>
@@ -372,19 +418,24 @@
 </div>
 </div>
 </dd></dl>
-<section id="add">
-<h2 id="add">add<a class="headerlink" href="#add" title="Permalink to this headline">¶</a></h2>
+<section id="add-apps">
+<h2 id="add-apps">add_apps<a class="headerlink" href="#add-apps" title="Permalink to this headline">¶</a></h2>
 <dl class="py method">
-<dt class="sig sig-object py" id="msdss_base_api.core.API.add">
-<span class="sig-prename descclassname"><span class="pre">API.</span></span><span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/msdss_base_api/core.html#API.add"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#msdss_base_api.core.API.add" title="Permalink to this definition">¶</a></dt>
-<dd><p>Decorator function for adding routes.</p>
+<dt class="sig sig-object py" id="msdss_base_api.core.API.add_apps">
+<span class="sig-prename descclassname"><span class="pre">API.</span></span><span class="sig-name descname"><span class="pre">add_apps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">apps</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_events</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_routes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_routers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/msdss_base_api/core.html#API.add_apps"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#msdss_base_api.core.API.add_apps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Combines multiple apps by:</p>
+<ul class="simple">
+<li><p>Combining app events via <a class="reference internal" href="#msdss_base_api.core.API.add_app_events" title="msdss_base_api.core.API.add_app_events"><code class="xref py py-meth docutils literal notranslate"><span class="pre">msdss_base_api.core.API.add_app_events()</span></code></a></p></li>
+<li><p>Combining app routes via <a class="reference internal" href="#msdss_base_api.core.API.add_app_routes" title="msdss_base_api.core.API.add_app_routes"><code class="xref py py-meth docutils literal notranslate"><span class="pre">msdss_base_api.core.API.add_app_routes()</span></code></a></p></li>
+<li><p>Combining app routers via <a class="reference internal" href="#msdss_base_api.core.API.add_app_routers" title="msdss_base_api.core.API.add_app_routers"><code class="xref py py-meth docutils literal notranslate"><span class="pre">msdss_base_api.core.API.add_app_routers()</span></code></a></p></li>
+</ul>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>method</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – HTTP request method (GET, POST, PUT, DELETE, etc).</p></li>
-<li><p><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – Path (e.g. “/”) of the route for the API.</p></li>
-<li><p><strong>*args</strong> – Additional arguments passed to the <code class="xref py py-meth docutils literal notranslate"><span class="pre">fastapi:fastapi.FastAPI.add_route()</span></code> method.</p></li>
-<li><p><strong>**kwargs</strong> – Additional arguments passed to the <code class="xref py py-meth docutils literal notranslate"><span class="pre">fastapi:fastapi.FastAPI.add_route()</span></code> method.</p></li>
+<li><p><strong>*apps</strong> (<a class="reference internal" href="#msdss_base_api.core.API" title="msdss_base_api.core.API"><code class="xref py py-class docutils literal notranslate"><span class="pre">msdss_base_api.core.API</span></code></a>) – Apps to combine.</p></li>
+<li><p><strong>add_events</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – Whether to combine events for each app or not.</p></li>
+<li><p><strong>add_routes</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – Whether to combine routes for each app or not.</p></li>
+<li><p><strong>add_routers</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – Whether to combine routers for each app or not.</p></li>
 </ul>
 </dd>
 </dl>
@@ -394,15 +445,433 @@
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">msdss_base_api.core</span> <span class="kn">import</span> <span class="n">API</span>
-<span class="n">app</span> <span class="o">=</span> <span class="n">API</span><span class="p">()</span>
+<span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
 
-<span class="nd">@app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"GET"</span><span class="p">,</span> <span class="s2">"/"</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">hello_world</span><span class="p">():</span>
-    <span class="k">return</span> <span class="s2">"hello world!"</span>
+<span class="c1"># Create apps</span>
+<span class="n">app1</span> <span class="o">=</span> <span class="n">API</span><span class="p">()</span>
+<span class="n">app2</span> <span class="o">=</span> <span class="n">API</span><span class="p">()</span>
+<span class="n">app3</span> <span class="o">=</span> <span class="n">API</span><span class="p">()</span>
+
+<span class="c1"># Add routes</span>
+<span class="nd">@app1</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">'GET'</span><span class="p">,</span> <span class="s1">'/start1'</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">hello_world1</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">"hello world 1!"</span>
+
+<span class="nd">@app2</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">'GET'</span><span class="p">,</span> <span class="s1">'/start2'</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">hello_world2</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">"hello world 2!"</span>
+
+<span class="nd">@app3</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">'GET'</span><span class="p">,</span> <span class="s1">'/start3'</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">hello_world3</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">"hello world 3!"</span>
+
+<span class="c1"># Create routers</span>
+<span class="n">router1</span> <span class="o">=</span> <span class="n">app1</span><span class="o">.</span><span class="n">create_router</span><span class="p">(</span>
+    <span class="n">prefix</span><span class="o">=</span><span class="s1">'/helloworld1'</span>
+<span class="p">)</span>
+<span class="n">router2</span> <span class="o">=</span> <span class="n">app2</span><span class="o">.</span><span class="n">create_router</span><span class="p">(</span>
+    <span class="n">prefix</span><span class="o">=</span><span class="s1">'/helloworld2'</span>
+<span class="p">)</span>
+<span class="n">router3</span> <span class="o">=</span> <span class="n">app3</span><span class="o">.</span><span class="n">create_router</span><span class="p">(</span>
+    <span class="n">prefix</span><span class="o">=</span><span class="s1">'/helloworld3'</span>
+<span class="p">)</span>
+
+<span class="c1"># Add router routes</span>
+<span class="nd">@router1</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'/start1'</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">hello_world1</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">"hello world 1!"</span>
+
+<span class="nd">@router2</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'/start2'</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">hello_world2</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">"hello world 2!"</span>
+
+<span class="nd">@router3</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'/start3'</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">hello_world3</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">"hello world 3!"</span>
+
+<span class="c1"># Add routers</span>
+<span class="n">app1</span><span class="o">.</span><span class="n">add_router</span><span class="p">(</span><span class="n">router1</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="s1">'helloworld1'</span><span class="p">])</span>
+<span class="n">app2</span><span class="o">.</span><span class="n">add_router</span><span class="p">(</span><span class="n">router2</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="s1">'helloworld2'</span><span class="p">])</span>
+<span class="n">app3</span><span class="o">.</span><span class="n">add_router</span><span class="p">(</span><span class="n">router3</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="s1">'helloworld3'</span><span class="p">])</span>
+
+<span class="c1"># Add events</span>
+<span class="nd">@app1</span><span class="o">.</span><span class="n">event</span><span class="p">(</span><span class="s2">"startup"</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">startup1</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"startup 1!"</span><span class="p">)</span>
+
+<span class="nd">@app2</span><span class="o">.</span><span class="n">event</span><span class="p">(</span><span class="s2">"startup"</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">startup2</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"startup 2!"</span><span class="p">)</span>
+
+<span class="nd">@app3</span><span class="o">.</span><span class="n">event</span><span class="p">(</span><span class="s2">"shutdown"</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">shutdown</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"shutdown!"</span><span class="p">)</span>
+
+<span class="c1"># Combine apps together into app1</span>
+<span class="n">app1</span><span class="o">.</span><span class="n">add_apps</span><span class="p">(</span><span class="n">app2</span><span class="p">,</span> <span class="n">app3</span><span class="p">)</span>
+
+<span class="c1"># Check main app event arguments</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'app1 combined events:</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+<span class="n">pprint</span><span class="p">(</span><span class="n">app1</span><span class="o">.</span><span class="n">events</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">app1 combined routes:</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+<span class="n">pprint</span><span class="p">(</span><span class="n">app1</span><span class="o">.</span><span class="n">routes</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">app1 combined routers:</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+<span class="n">pprint</span><span class="p">(</span><span class="n">app1</span><span class="o">.</span><span class="n">routers</span><span class="p">)</span>
+
+<span class="c1"># Run the app with app1.start()</span>
+<span class="c1"># API is hosted at http://localhost:8000</span>
+<span class="c1"># app1.start()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>app1 combined events:
+
+[{'event': 'startup',
+  'func': &lt;function API.add_app_events.&lt;locals&gt;.func at 0x7fc0e9f63e50&gt;},
+ {'event': 'shutdown',
+  'func': &lt;function API.add_app_events.&lt;locals&gt;.func at 0x7fc0e9f63ee0&gt;}]
+
+app1 combined routes:
+
+[{'args': (),
+  'func': &lt;function hello_world1 at 0x7fc0e9f4daf0&gt;,
+  'kwargs': {},
+  'method': 'GET',
+  'path': '/start1'},
+ {'args': (),
+  'func': &lt;function hello_world2 at 0x7fc0e9f4dca0&gt;,
+  'kwargs': {},
+  'method': 'GET',
+  'path': '/start2'},
+ {'args': (),
+  'func': &lt;function hello_world3 at 0x7fc0e9f4de50&gt;,
+  'kwargs': {},
+  'method': 'GET',
+  'path': '/start3'}]
+
+app1 combined routers:
+
+[{'args': (),
+  'kwargs': {'tags': ['helloworld1']},
+  'router': &lt;fastapi.routing.APIRouter object at 0x7fc0e9f55070&gt;},
+ {'args': (),
+  'kwargs': {'tags': ['helloworld2']},
+  'router': &lt;fastapi.routing.APIRouter object at 0x7fc0e9f75f70&gt;},
+ {'args': (),
+  'kwargs': {'tags': ['helloworld3']},
+  'router': &lt;fastapi.routing.APIRouter object at 0x7fc0e9f550a0&gt;}]
+</pre></div>
+</div>
+</div>
+</div>
+</dd></dl>
+</section>
+<section id="add-app-events">
+<h2 id="add-app-events">add_app_events<a class="headerlink" href="#add-app-events" title="Permalink to this headline">¶</a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="msdss_base_api.core.API.add_app_events">
+<span class="sig-prename descclassname"><span class="pre">API.</span></span><span class="sig-name descname"><span class="pre">add_app_events</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">apps</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/msdss_base_api/core.html#API.add_app_events"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#msdss_base_api.core.API.add_app_events" title="Permalink to this definition">¶</a></dt>
+<dd><p>Combines event functions from several apps to the API via <a class="reference internal" href="#msdss_base_api.core.API.add_event" title="msdss_base_api.core.API.add_event"><code class="xref py py-meth docutils literal notranslate"><span class="pre">msdss_base_api.core.API.add_event()</span></code></a>.</p>
+<ul class="simple">
+<li><p>Each event <code class="docutils literal notranslate"><span class="pre">func</span></code> will be run one after another and added based on <code class="docutils literal notranslate"><span class="pre">event</span></code> type</p></li>
+<li><p>For example, all <code class="docutils literal notranslate"><span class="pre">startup</span></code> event functions from all apps will be collected into a single function and added as a single event function, which runs each function one after another</p></li>
+<li><p>The result is one function for each event type</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>*apps</strong> (<a class="reference internal" href="#msdss_base_api.core.API" title="msdss_base_api.core.API"><code class="xref py py-class docutils literal notranslate"><span class="pre">msdss_base_api.core.API</span></code></a>) – Apps to add events from.</p>
+</dd>
+</dl>
+<p class="rubric">Author</p>
+<p>Richard Wen &lt;<a class="reference external" href="mailto:rrwen.dev%40gmail.com">rrwen<span>.</span>dev<span>@</span>gmail<span>.</span>com</a>&gt;</p>
+<p class="rubric">Example</p>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">msdss_base_api.core</span> <span class="kn">import</span> <span class="n">API</span>
+<span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+
+<span class="c1"># Create apps</span>
+<span class="n">app1</span> <span class="o">=</span> <span class="n">API</span><span class="p">()</span>
+<span class="n">app2</span> <span class="o">=</span> <span class="n">API</span><span class="p">()</span>
+<span class="n">app3</span> <span class="o">=</span> <span class="n">API</span><span class="p">()</span>
+
+<span class="c1"># Add events</span>
+<span class="nd">@app1</span><span class="o">.</span><span class="n">event</span><span class="p">(</span><span class="s2">"startup"</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">startup1</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"startup 1!"</span><span class="p">)</span>
+
+<span class="nd">@app2</span><span class="o">.</span><span class="n">event</span><span class="p">(</span><span class="s2">"startup"</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">startup2</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"startup 2!"</span><span class="p">)</span>
+
+<span class="nd">@app3</span><span class="o">.</span><span class="n">event</span><span class="p">(</span><span class="s2">"shutdown"</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">shutdown</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"shutdown!"</span><span class="p">)</span>
+
+<span class="c1"># Add events from other apps to main app</span>
+<span class="n">app1</span><span class="o">.</span><span class="n">add_app_events</span><span class="p">(</span><span class="n">app2</span><span class="p">,</span> <span class="n">app3</span><span class="p">)</span>
+
+<span class="c1"># Check main app event arguments</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'app1 startup event combined with app2 startup event:</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+<span class="n">pprint</span><span class="p">(</span><span class="n">app1</span><span class="o">.</span><span class="n">events</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">app3 shutdown event added to app1:</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+<span class="n">pprint</span><span class="p">(</span><span class="n">app1</span><span class="o">.</span><span class="n">events</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="c1"># Run the app with app1.start()</span>
+<span class="c1"># API is hosted at http://localhost:8000</span>
+<span class="c1"># app1.start()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>app1 startup event combined with app2 startup event:
+
+{'event': 'startup',
+ 'func': &lt;function API.add_app_events.&lt;locals&gt;.func at 0x7fc0e9f77040&gt;}
+
+app3 shutdown event added to app1:
+
+{'event': 'shutdown',
+ 'func': &lt;function API.add_app_events.&lt;locals&gt;.func at 0x7fc0e9f77280&gt;}
+</pre></div>
+</div>
+</div>
+</div>
+</dd></dl>
+</section>
+<section id="add-app-routes">
+<h2 id="add-app-routes">add_app_routes<a class="headerlink" href="#add-app-routes" title="Permalink to this headline">¶</a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="msdss_base_api.core.API.add_app_routes">
+<span class="sig-prename descclassname"><span class="pre">API.</span></span><span class="sig-name descname"><span class="pre">add_app_routes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">apps</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/msdss_base_api/core.html#API.add_app_routes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#msdss_base_api.core.API.add_app_routes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds routes from several apps to the API via <a class="reference internal" href="#msdss_base_api.core.API.add_route" title="msdss_base_api.core.API.add_route"><code class="xref py py-meth docutils literal notranslate"><span class="pre">msdss_base_api.core.API.add_route()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>*apps</strong> (<a class="reference internal" href="#msdss_base_api.core.API" title="msdss_base_api.core.API"><code class="xref py py-class docutils literal notranslate"><span class="pre">msdss_base_api.core.API</span></code></a>) – Apps to add routes from.</p>
+</dd>
+</dl>
+<p class="rubric">Author</p>
+<p>Richard Wen &lt;<a class="reference external" href="mailto:rrwen.dev%40gmail.com">rrwen<span>.</span>dev<span>@</span>gmail<span>.</span>com</a>&gt;</p>
+<p class="rubric">Example</p>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">msdss_base_api.core</span> <span class="kn">import</span> <span class="n">API</span>
+<span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+
+<span class="c1"># Create apps</span>
+<span class="n">app1</span> <span class="o">=</span> <span class="n">API</span><span class="p">()</span>
+<span class="n">app2</span> <span class="o">=</span> <span class="n">API</span><span class="p">()</span>
+<span class="n">app3</span> <span class="o">=</span> <span class="n">API</span><span class="p">()</span>
+
+<span class="c1"># Add routes</span>
+<span class="nd">@app1</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">'GET'</span><span class="p">,</span> <span class="s1">'/start1'</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">hello_world1</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">"hello world 1!"</span>
+
+<span class="nd">@app2</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">'GET'</span><span class="p">,</span> <span class="s1">'/start2'</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">hello_world2</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">"hello world 2!"</span>
+
+<span class="nd">@app3</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">'GET'</span><span class="p">,</span> <span class="s1">'/start3'</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">hello_world3</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">"hello world 3!"</span>
+
+<span class="c1"># Add routes from other apps to main app</span>
+<span class="n">app1</span><span class="o">.</span><span class="n">add_app_routes</span><span class="p">(</span><span class="n">app2</span><span class="p">,</span> <span class="n">app3</span><span class="p">)</span>
+
+<span class="c1"># Check main app route arguments</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'app1 route:</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+<span class="n">pprint</span><span class="p">(</span><span class="n">app1</span><span class="o">.</span><span class="n">routes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">app2 route added to app1:</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+<span class="n">pprint</span><span class="p">(</span><span class="n">app1</span><span class="o">.</span><span class="n">routes</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">app3 route added to app1:</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+<span class="n">pprint</span><span class="p">(</span><span class="n">app1</span><span class="o">.</span><span class="n">routes</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+
+<span class="c1"># Run the app with app1.start()</span>
+<span class="c1"># API is hosted at http://localhost:8000</span>
+<span class="c1"># app1.start()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>app1 route:
+
+{'args': (),
+ 'func': &lt;function hello_world1 at 0x7fc0e9f77dc0&gt;,
+ 'kwargs': {},
+ 'method': 'GET',
+ 'path': '/start1'}
+
+app2 route added to app1:
+
+{'args': (),
+ 'func': &lt;function hello_world2 at 0x7fc0e9f77c10&gt;,
+ 'kwargs': {},
+ 'method': 'GET',
+ 'path': '/start2'}
+
+app3 route added to app1:
+
+{'args': (),
+ 'func': &lt;function hello_world3 at 0x7fc0e9f77a60&gt;,
+ 'kwargs': {},
+ 'method': 'GET',
+ 'path': '/start3'}
+</pre></div>
+</div>
+</div>
+</div>
+</dd></dl>
+</section>
+<section id="add-app-routers">
+<h2 id="add-app-routers">add_app_routers<a class="headerlink" href="#add-app-routers" title="Permalink to this headline">¶</a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="msdss_base_api.core.API.add_app_routers">
+<span class="sig-prename descclassname"><span class="pre">API.</span></span><span class="sig-name descname"><span class="pre">add_app_routers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">apps</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/msdss_base_api/core.html#API.add_app_routers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#msdss_base_api.core.API.add_app_routers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds routers from several apps to the API via <a class="reference internal" href="#msdss_base_api.core.API.add_router" title="msdss_base_api.core.API.add_router"><code class="xref py py-meth docutils literal notranslate"><span class="pre">msdss_base_api.core.API.add_router()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>*apps</strong> (<a class="reference internal" href="#msdss_base_api.core.API" title="msdss_base_api.core.API"><code class="xref py py-class docutils literal notranslate"><span class="pre">msdss_base_api.core.API</span></code></a>) – Apps to add routers from.</p>
+</dd>
+</dl>
+<p class="rubric">Author</p>
+<p>Richard Wen &lt;<a class="reference external" href="mailto:rrwen.dev%40gmail.com">rrwen<span>.</span>dev<span>@</span>gmail<span>.</span>com</a>&gt;</p>
+<p class="rubric">Example</p>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">msdss_base_api.core</span> <span class="kn">import</span> <span class="n">API</span>
+<span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+
+<span class="c1"># Create apps</span>
+<span class="n">app1</span> <span class="o">=</span> <span class="n">API</span><span class="p">()</span>
+<span class="n">app2</span> <span class="o">=</span> <span class="n">API</span><span class="p">()</span>
+<span class="n">app3</span> <span class="o">=</span> <span class="n">API</span><span class="p">()</span>
+
+<span class="c1"># Create routers</span>
+<span class="n">router1</span> <span class="o">=</span> <span class="n">app1</span><span class="o">.</span><span class="n">create_router</span><span class="p">(</span>
+    <span class="n">prefix</span><span class="o">=</span><span class="s1">'/helloworld1'</span>
+<span class="p">)</span>
+<span class="n">router2</span> <span class="o">=</span> <span class="n">app2</span><span class="o">.</span><span class="n">create_router</span><span class="p">(</span>
+    <span class="n">prefix</span><span class="o">=</span><span class="s1">'/helloworld2'</span>
+<span class="p">)</span>
+<span class="n">router3</span> <span class="o">=</span> <span class="n">app3</span><span class="o">.</span><span class="n">create_router</span><span class="p">(</span>
+    <span class="n">prefix</span><span class="o">=</span><span class="s1">'/helloworld3'</span>
+<span class="p">)</span>
+
+<span class="c1"># Add routes</span>
+<span class="nd">@router1</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'/start1'</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">hello_world1</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">"hello world 1!"</span>
+
+<span class="nd">@router2</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'/start2'</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">hello_world2</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">"hello world 2!"</span>
+
+<span class="nd">@router3</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'/start3'</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">hello_world3</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">"hello world 3!"</span>
+
+<span class="c1"># Add routers</span>
+<span class="n">app1</span><span class="o">.</span><span class="n">add_router</span><span class="p">(</span><span class="n">router1</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="s1">'helloworld1'</span><span class="p">])</span>
+<span class="n">app2</span><span class="o">.</span><span class="n">add_router</span><span class="p">(</span><span class="n">router2</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="s1">'helloworld2'</span><span class="p">])</span>
+<span class="n">app3</span><span class="o">.</span><span class="n">add_router</span><span class="p">(</span><span class="n">router3</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="s1">'helloworld3'</span><span class="p">])</span>
+
+<span class="c1"># Add routers from other apps to main app</span>
+<span class="n">app1</span><span class="o">.</span><span class="n">add_app_routers</span><span class="p">(</span><span class="n">app2</span><span class="p">,</span> <span class="n">app3</span><span class="p">)</span>
+
+<span class="c1"># Check main app router arguments</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'app1 router:</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+<span class="n">pprint</span><span class="p">(</span><span class="n">app1</span><span class="o">.</span><span class="n">routers</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">app2 router added to app1:</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+<span class="n">pprint</span><span class="p">(</span><span class="n">app1</span><span class="o">.</span><span class="n">routers</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">app3 router added to app1:</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+<span class="n">pprint</span><span class="p">(</span><span class="n">app1</span><span class="o">.</span><span class="n">routers</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+
+<span class="c1"># Run the app with app1.start()</span>
+<span class="c1"># API is hosted at http://localhost:8000</span>
+<span class="c1"># app1.start()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>app1 router:
+
+{'args': (),
+ 'kwargs': {'tags': ['helloworld1']},
+ 'router': &lt;fastapi.routing.APIRouter object at 0x7fc0d8174040&gt;}
+
+app2 router added to app1:
+
+{'args': (),
+ 'kwargs': {'tags': ['helloworld2']},
+ 'router': &lt;fastapi.routing.APIRouter object at 0x7fc0e9f49f10&gt;}
+
+app3 router added to app1:
+
+{'args': (),
+ 'kwargs': {'tags': ['helloworld3']},
+ 'router': &lt;fastapi.routing.APIRouter object at 0x7fc0e9f76ca0&gt;}
+</pre></div>
+</div>
+</div>
+</div>
+</dd></dl>
+</section>
+<section id="add-event">
+<h2 id="add-event">add_event<a class="headerlink" href="#add-event" title="Permalink to this headline">¶</a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="msdss_base_api.core.API.add_event">
+<span class="sig-prename descclassname"><span class="pre">API.</span></span><span class="sig-name descname"><span class="pre">add_event</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/msdss_base_api/core.html#API.add_event"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#msdss_base_api.core.API.add_event" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handles API events using a custom function.</p>
+<p>Also adds the arguments passed to the attribute <code class="docutils literal notranslate"><span class="pre">events</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>event</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The event to handle. Currently supports <code class="docutils literal notranslate"><span class="pre">startup</span></code> (before starting) and <code class="docutils literal notranslate"><span class="pre">shutdown</span></code> (during shutdown).</p></li>
+<li><p><strong>func</strong> (<em>function</em>) – Function to execute when the event occurs.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Author</p>
+<p>Richard Wen &lt;<a class="reference external" href="mailto:rrwen.dev%40gmail.com">rrwen<span>.</span>dev<span>@</span>gmail<span>.</span>com</a>&gt;</p>
+<p class="rubric">Example</p>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">msdss_base_api.core</span> <span class="kn">import</span> <span class="n">API</span>
+<span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">API</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">before_startup</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"This is run before startup."</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">add_event</span><span class="p">(</span><span class="s2">"startup"</span><span class="p">,</span> <span class="n">before_startup</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">during_shutdown</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"This is run during shutdown."</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">add_event</span><span class="p">(</span><span class="s2">"shutdown"</span><span class="p">,</span> <span class="n">during_shutdown</span><span class="p">)</span>
+
+<span class="c1"># Check router arguments</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'startup</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+<span class="n">pprint</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">events</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">shutdown</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+<span class="n">pprint</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">events</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="c1"># Run the app with app.start()</span>
+<span class="c1"># API is hosted at http://localhost:8000</span>
+<span class="c1"># app.start()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>startup
+
+{'event': 'startup', 'func': &lt;function before_startup at 0x7fc0d81dfee0&gt;}
+
+shutdown
+
+{'event': 'shutdown', 'func': &lt;function during_shutdown at 0x7fc0d81dfaf0&gt;}
+</pre></div>
+</div>
 </div>
 </div>
 </dd></dl>
@@ -430,54 +899,27 @@
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">msdss_base_api.core</span> <span class="kn">import</span> <span class="n">API</span>
+<span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
 <span class="n">app</span> <span class="o">=</span> <span class="n">API</span><span class="p">()</span>
 
+<span class="c1"># Add route</span>
 <span class="k">def</span> <span class="nf">hello_world</span><span class="p">():</span>
     <span class="k">return</span> <span class="s2">"hello world!"</span>
 <span class="n">app</span><span class="o">.</span><span class="n">add_route</span><span class="p">(</span><span class="s2">"GET"</span><span class="p">,</span> <span class="s2">"/"</span><span class="p">,</span> <span class="n">hello_world</span><span class="p">)</span>
+
+<span class="c1"># Check route arguments</span>
+<span class="n">pprint</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">routes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-</div>
-</div>
-</dd></dl>
-</section>
-<section id="add-routes">
-<h2 id="add-routes">add_routes<a class="headerlink" href="#add-routes" title="Permalink to this headline">¶</a></h2>
-<dl class="py method">
-<dt class="sig sig-object py" id="msdss_base_api.core.API.add_routes">
-<span class="sig-prename descclassname"><span class="pre">API.</span></span><span class="sig-name descname"><span class="pre">add_routes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">routes</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/msdss_base_api/core.html#API.add_routes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#msdss_base_api.core.API.add_routes" title="Permalink to this definition">¶</a></dt>
-<dd><p>Add multiple routes using a dict to the API.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>routes</strong> (<em>list of dict</em>) – A list of dictionaries containing routes with the same parameter names as <code class="xref py py-meth docutils literal notranslate"><span class="pre">core.API.add_route()</span></code>.</p>
-</dd>
-</dl>
-<p class="rubric">Author</p>
-<p>Richard Wen &lt;<a class="reference external" href="mailto:rrwen.dev%40gmail.com">rrwen<span>.</span>dev<span>@</span>gmail<span>.</span>com</a>&gt;</p>
-<p class="rubric">Example</p>
-<div class="jupyter_cell jupyter_container docutils container">
-<div class="cell_input code_cell docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">msdss_base_api.core</span> <span class="kn">import</span> <span class="n">API</span>
-<span class="n">app</span> <span class="o">=</span> <span class="n">API</span><span class="p">()</span>
-
-<span class="k">def</span> <span class="nf">hello_world</span><span class="p">():</span>
-    <span class="k">return</span> <span class="s2">"hello world!"</span>
-
-<span class="k">def</span> <span class="nf">hello_world2</span><span class="p">():</span>
-    <span class="k">return</span> <span class="s2">"hello world 2!"</span>
-
-<span class="n">routes</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">{</span><span class="s2">"method"</span><span class="p">:</span> <span class="s2">"GET"</span><span class="p">,</span> <span class="s2">"path"</span><span class="p">:</span> <span class="s2">"/"</span><span class="p">,</span> <span class="s2">"func"</span><span class="p">:</span> <span class="n">hello_world</span><span class="p">},</span>
-    <span class="p">{</span><span class="s2">"method"</span><span class="p">:</span> <span class="s2">"GET"</span><span class="p">,</span> <span class="s2">"path"</span><span class="p">:</span> <span class="s2">"/two"</span><span class="p">,</span> <span class="s2">"func"</span><span class="p">:</span> <span class="n">hello_world2</span><span class="p">},</span>
-<span class="p">]</span>
-
-<span class="n">app</span><span class="o">.</span><span class="n">add_routes</span><span class="p">(</span><span class="n">routes</span><span class="p">)</span>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>{'args': (),
+ 'func': &lt;function hello_world at 0x7fc0d81df9d0&gt;,
+ 'kwargs': {},
+ 'method': 'GET',
+ 'path': '/'}
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
 </div>
 </div>
 </dd></dl>
@@ -488,6 +930,7 @@
 <dt class="sig sig-object py" id="msdss_base_api.core.API.add_router">
 <span class="sig-prename descclassname"><span class="pre">API.</span></span><span class="sig-name descname"><span class="pre">add_router</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">router</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/msdss_base_api/core.html#API.add_router"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#msdss_base_api.core.API.add_router" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a router to the API.</p>
+<p>Also adds the arguments passed to the attribute <code class="docutils literal notranslate"><span class="pre">routers</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -532,7 +975,7 @@
 <div class="cell_output docutils container">
 <div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>{'args': (),
  'kwargs': {'tags': ['helloworld']},
- 'router': &lt;fastapi.routing.APIRouter object at 0x7fef91ca97f0&gt;}
+ 'router': &lt;fastapi.routing.APIRouter object at 0x7fc0d81d9c10&gt;}
 </pre></div>
 </div>
 </div>
@@ -582,11 +1025,11 @@
 </div>
 </dd></dl>
 </section>
-<section id="on">
-<h2 id="on">on<a class="headerlink" href="#on" title="Permalink to this headline">¶</a></h2>
+<section id="event">
+<h2 id="event">event<a class="headerlink" href="#event" title="Permalink to this headline">¶</a></h2>
 <dl class="py method">
-<dt class="sig sig-object py" id="msdss_base_api.core.API.on">
-<span class="sig-prename descclassname"><span class="pre">API.</span></span><span class="sig-name descname"><span class="pre">on</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/msdss_base_api/core.html#API.on"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#msdss_base_api.core.API.on" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="msdss_base_api.core.API.event">
+<span class="sig-prename descclassname"><span class="pre">API.</span></span><span class="sig-name descname"><span class="pre">event</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/msdss_base_api/core.html#API.event"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#msdss_base_api.core.API.event" title="Permalink to this definition">¶</a></dt>
 <dd><p>Decorator function for handling events.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -605,11 +1048,11 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">msdss_base_api.core</span> <span class="kn">import</span> <span class="n">API</span>
 <span class="n">app</span> <span class="o">=</span> <span class="n">API</span><span class="p">()</span>
 
-<span class="nd">@app</span><span class="o">.</span><span class="n">on</span><span class="p">(</span><span class="s2">"startup"</span><span class="p">)</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">event</span><span class="p">(</span><span class="s2">"startup"</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">before_startup</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"This is run before startup."</span><span class="p">)</span>
 
-<span class="nd">@app</span><span class="o">.</span><span class="n">on</span><span class="p">(</span><span class="s2">"shutdown"</span><span class="p">)</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">event</span><span class="p">(</span><span class="s2">"shutdown"</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">during_shutdown</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"This is run during shutdown."</span><span class="p">)</span>
 
@@ -624,19 +1067,20 @@
 </div>
 </dd></dl>
 </section>
-<section id="on-event">
-<h2 id="on-event">on_event<a class="headerlink" href="#on-event" title="Permalink to this headline">¶</a></h2>
+<section id="route">
+<h2 id="route">route<a class="headerlink" href="#route" title="Permalink to this headline">¶</a></h2>
 <dl class="py method">
-<dt class="sig sig-object py" id="msdss_base_api.core.API.on_event">
-<span class="sig-prename descclassname"><span class="pre">API.</span></span><span class="sig-name descname"><span class="pre">on_event</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/msdss_base_api/core.html#API.on_event"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#msdss_base_api.core.API.on_event" title="Permalink to this definition">¶</a></dt>
-<dd><p>Handles API events using a custom function.</p>
+<dt class="sig sig-object py" id="msdss_base_api.core.API.route">
+<span class="sig-prename descclassname"><span class="pre">API.</span></span><span class="sig-name descname"><span class="pre">route</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/msdss_base_api/core.html#API.route"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#msdss_base_api.core.API.route" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decorator function for adding routes.</p>
+<p>Also adds the arguments passed to the attribute <code class="docutils literal notranslate"><span class="pre">routes</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>event</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The event to handle. Currently supports <code class="docutils literal notranslate"><span class="pre">startup</span></code> (before starting) and <code class="docutils literal notranslate"><span class="pre">shutdown</span></code> (during shutdown).</p></li>
-<li><p><strong>func</strong> (<em>function</em>) – Function to execute when the event occurs.</p></li>
-<li><p><strong>*args</strong> – Additional arguments passed to the <code class="xref py py-meth docutils literal notranslate"><span class="pre">fastapi:fastapi.FastAPI.add_event_handler()</span></code> method.</p></li>
-<li><p><strong>**kwargs</strong> – Additional arguments passed to the <code class="xref py py-meth docutils literal notranslate"><span class="pre">fastapi:fastapi.FastAPI.add_event_handler()</span></code> method.</p></li>
+<li><p><strong>method</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – HTTP request method (GET, POST, PUT, DELETE, etc).</p></li>
+<li><p><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – Path (e.g. “/”) of the route for the API.</p></li>
+<li><p><strong>*args</strong> – Additional arguments passed to the <code class="xref py py-meth docutils literal notranslate"><span class="pre">fastapi:fastapi.FastAPI.add_route()</span></code> method.</p></li>
+<li><p><strong>**kwargs</strong> – Additional arguments passed to the <code class="xref py py-meth docutils literal notranslate"><span class="pre">fastapi:fastapi.FastAPI.add_route()</span></code> method.</p></li>
 </ul>
 </dd>
 </dl>
@@ -648,17 +1092,9 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">msdss_base_api.core</span> <span class="kn">import</span> <span class="n">API</span>
 <span class="n">app</span> <span class="o">=</span> <span class="n">API</span><span class="p">()</span>
 
-<span class="k">def</span> <span class="nf">before_startup</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"This is run before startup."</span><span class="p">)</span>
-<span class="n">app</span><span class="o">.</span><span class="n">on_event</span><span class="p">(</span><span class="s2">"startup"</span><span class="p">,</span> <span class="n">before_startup</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">during_shutdown</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"This is run during shutdown."</span><span class="p">)</span>
-<span class="n">app</span><span class="o">.</span><span class="n">on_event</span><span class="p">(</span><span class="s2">"shutdown"</span><span class="p">,</span> <span class="n">during_shutdown</span><span class="p">)</span>
-
-<span class="c1"># Run the app with app.start()</span>
-<span class="c1"># API is hosted at http://localhost:8000</span>
-<span class="c1"># app.start()</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">"GET"</span><span class="p">,</span> <span class="s2">"/"</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">hello_world</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">"hello world!"</span>
 </pre></div>
 </div>
 </div>

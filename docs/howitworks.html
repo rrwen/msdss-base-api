@@ -47,7 +47,7 @@
   
   
   
-    <title>How it Works &#8212; 0.0.5</title>
+    <title>How it Works &#8212; 0.1.0</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/material.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -66,7 +66,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="API Reference" href="reference/index.html" />
-    <link rel="prev" title="Quick Start" href="quickstart.html" />
+    <link rel="prev" title="Usage" href="usage.html" />
   
    
 
@@ -90,11 +90,11 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex navheader">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="index.html" title="0.0.5"
+        <a href="index.html" title="0.1.0"
            class="md-header-nav__button md-logo">
           
               <img src="_static/logo.svg" height="26"
-                   alt="0.0.5 logo">
+                   alt="0.1.0 logo">
           
         </a>
       </div>
@@ -177,7 +177,7 @@
   <nav class="md-tabs" data-md-component="tabs">
     <div class="md-tabs__inner md-grid">
       <ul class="md-tabs__list">
-          <li class="md-tabs__item"><a href="index.html" class="md-tabs__link">0.0.5</a></li>
+          <li class="md-tabs__item"><a href="index.html" class="md-tabs__link">0.1.0</a></li>
       </ul>
     </div>
   </nav>
@@ -189,13 +189,13 @@
               <div class="md-sidebar__inner">
                 <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="index.html" title="0.0.5" class="md-nav__button md-logo">
+    <a href="index.html" title="0.1.0" class="md-nav__button md-logo">
       
         <img src="_static/logo.svg" alt=" logo" width="48" height="48">
       
     </a>
     <a href="index.html"
-       title="0.0.5">msdss-base-api</a>
+       title="0.1.0">msdss-base-api</a>
   </label>
     <div class="md-nav__source">
       <a href="https://github.com/rrwen/msdss-base-api/" title="Go to repository" class="md-source" data-md-source="github">
@@ -233,6 +233,13 @@
     <li class="md-nav__item">
     
     
+      <a href="usage.html" class="md-nav__link">Usage</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     <label class="md-nav__link md-nav__link--active" for="__toc"> How it Works </label>
     
@@ -240,7 +247,16 @@
       
         
 <nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">Contents</label>
   <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#howitworks--page-root" class="md-nav__link">How it Works</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#adding-routes-routers-and-events" class="md-nav__link">Adding Routes, Routers, and Events</a>
+        </li>
+        <li class="md-nav__item"><a href="#combining-routes-routers-and-events-across-apps" class="md-nav__link">Combining Routes, Routers, and Events Across Apps</a>
+        </li></ul>
+            </nav>
+        </li>
     
 <li class="md-nav__item"><a class="md-nav__extra_link" href="_sources/howitworks.rst.txt">Show Source</a> </li>
 
@@ -268,7 +284,16 @@
               <div class="md-sidebar__inner">
                 
 <nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">Contents</label>
   <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#howitworks--page-root" class="md-nav__link">How it Works</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#adding-routes-routers-and-events" class="md-nav__link">Adding Routes, Routers, and Events</a>
+        </li>
+        <li class="md-nav__item"><a href="#combining-routes-routers-and-events-across-apps" class="md-nav__link">Combining Routes, Routers, and Events Across Apps</a>
+        </li></ul>
+            </nav>
+        </li>
     
 <li class="md-nav__item"><a class="md-nav__extra_link" href="_sources/howitworks.rst.txt">Show Source</a> </li>
 
@@ -285,42 +310,92 @@
             
   <section id="how-it-works">
 <h1 id="howitworks--page-root">How it Works<a class="headerlink" href="#howitworks--page-root" title="Permalink to this headline">¶</a></h1>
-<p>The base API wraps around <a class="reference external" href="https://fastapi.tiangolo.com/">FastAPI</a> to define routes and logic, while <a class="reference external" href="https://www.uvicorn.org/">Uvicorn</a> is used to serve the APIs.</p>
-<p>First a <code class="docutils literal notranslate"><span class="pre">FastAPI()</span></code> object is created, and routes are added with <a class="reference external" href="https://github.com/tiangolo/fastapi/blob/bee35f5ae1fc58e7ab125427ad4287210e99d8b3/fastapi/routing.py#L479">.add_api_route()</a>, while API events are handled with <a class="reference external" href="https://github.com/encode/starlette/blob/6c556f6c5e4aa70173a84f6e6854390241231021/starlette/routing.py#L749">add_event_handler</a>. Then <code class="docutils literal notranslate"><span class="pre">uvicorn</span></code> is used to run the app with <a class="reference external" href="https://www.uvicorn.org/deployment/#running-programmatically">.run()</a>.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">fastapi</span> <span class="kn">import</span> <span class="n">FastAPI</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">uvicorn</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">helloworld</span><span class="p">():</span> <span class="k">return</span> <span class="s2">"hello world!"</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">app</span><span class="o">.</span><span class="n">add_api_route</span><span class="p">(</span><span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">"GET"</span><span class="p">],</span> <span class="n">path</span><span class="o">=</span><span class="s2">"/"</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="n">helloworld</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">before_startup</span><span class="p">():</span> <span class="nb">print</span><span class="p">(</span><span class="s2">"This is run before startup."</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">app</span><span class="o">.</span><span class="n">add_event_handler</span><span class="p">(</span><span class="n">event_type</span><span class="o">=</span><span class="s2">"startup"</span><span class="p">,</span> <span class="n">func</span><span class="o">=</span><span class="n">before_startup</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">uvicorn</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="graphviz"><img alt='digraph methods {
+<section id="adding-routes-routers-and-events">
+<h2 id="adding-routes-routers-and-events">Adding Routes, Routers, and Events<a class="headerlink" href="#adding-routes-routers-and-events" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="reference/api.html#msdss_base_api.core.API" title="msdss_base_api.core.API"><code class="xref py py-class docutils literal notranslate"><span class="pre">msdss_base_api.core.API</span></code></a> wraps around <a class="reference external" href="https://fastapi.tiangolo.com/">FastAPI</a> to define routes and logic, while <a class="reference external" href="https://www.uvicorn.org/">Uvicorn</a> is used to serve the APIs <a class="reference external" href="https://www.uvicorn.org/deployment/#running-programmatically">programmatically</a>.</p>
+<p>First a <code class="docutils literal notranslate"><span class="pre">FastAPI()</span></code> object is created, and routes/routers are added with <a class="reference external" href="https://github.com/tiangolo/fastapi/blob/bee35f5ae1fc58e7ab125427ad4287210e99d8b3/fastapi/routing.py#L479">.add_api_route()</a> / <a class="reference external" href="https://github.com/tiangolo/fastapi/blob/bee35f5ae1fc58e7ab125427ad4287210e99d8b3/fastapi/routing.py#L632">.include_router()</a>, while API events are handled with <a class="reference external" href="https://github.com/encode/starlette/blob/6c556f6c5e4aa70173a84f6e6854390241231021/starlette/routing.py#L749">.add_event_handler()</a>.
+Then <code class="docutils literal notranslate"><span class="pre">uvicorn</span></code> is used to run the app with <a class="reference external" href="https://www.uvicorn.org/deployment/#running-programmatically">.run()</a>.
+These form the basis of adding routes, routers, and events.</p>
+<div class="graphviz"><img alt='digraph methods1 {
 rankdir=TB;
+
 api[label="FastAPI" URL="https://fastapi.tiangolo.com/" style=filled];
-apimeth1[label=".add_api_route()" shape=rect style=rounded URL="https://github.com/tiangolo/fastapi/blob/bee35f5ae1fc58e7ab125427ad4287210e99d8b3/fastapi/routing.py#L479"];
-apimeth2[label=".add_event_handler()" shape=rect style=rounded URL="https://github.com/encode/starlette/blob/6c556f6c5e4aa70173a84f6e6854390241231021/starlette/routing.py#L749"];
+apiroutemeth[label=".add_api_route()" shape=rect style=rounded];
+eventhandlermeth[label=".add_event_handler()" shape=rect style=rounded];
+routermeth[label=".add_event_handler()" shape=rect style=rounded];
+
 server[label="Uvicorn" URL="https://www.uvicorn.org/" style=filled];
-servermeth1[label=".run()" shape=rect style=rounded URL="https://www.uvicorn.org/deployment/#running-programmatically"];
+run[label=".run()" shape=rect style=rounded];
+start[label=".start()" shape=rect style=rounded];
+
+addevent[label=".add_event()" shape=rect style=rounded];
+addroute[label=".add_route()" shape=rect style=rounded];
+addrouter[label=".add_router()" shape=rect style=rounded];
 
 subgraph cluster {
-   label=&lt; &lt;B&gt;msdss-base-api&lt;/B&gt; &gt;;
+   label=&lt; &lt;B&gt;msdss-base-api.core.API (add_route/router/event)&lt;/B&gt; &gt;;
    style=rounded;
    {rank=min; api -&gt; server;}
-   apimeth1 -&gt; api[arrowhead=none];
-   apimeth2 -&gt; api[arrowhead=none];
-   servermeth1 -&gt; server[arrowhead=none];
+
+   apiroutemeth -&gt; api[arrowhead=none];
+   routermeth -&gt; api[arrowhead=none];
+   eventhandlermeth -&gt; api[arrowhead=none];
+   run -&gt; server[arrowhead=none];
+
+   apiroutemeth -&gt; addroute;
+   routermeth -&gt; addrouter;
+   eventhandlermeth -&gt; addevent;
+   run -&gt; start;
 }
-}' class="graphviz" src="_images/graphviz-ec5b929f61470c21038c693bd6c6c4be0640cdc0.png" usemap="#methods"/></div>
-<map id="methods" name="methods">
-<area alt="" coords="343,81,340,74,332,67,320,62,305,59,288,57,271,59,256,62,244,67,236,74,233,81,236,89,244,95,256,101,271,104,288,105,305,104,320,101,332,95,340,89" href="https://fastapi.tiangolo.com/" id="node1" shape="poly" title="FastAPI"/>
-<area alt="" coords="474,81,471,74,463,67,452,62,437,59,420,57,403,59,388,62,377,67,369,74,366,81,369,89,377,95,388,101,403,104,420,105,437,104,452,101,463,95,471,89" href="https://www.uvicorn.org/" id="node4" shape="poly" title="Uvicorn"/>
-<area alt="" coords="27,153,173,201" href="https://github.com/tiangolo/fastapi/blob/bee35f5ae1fc58e7ab125427ad4287210e99d8b3/fastapi/routing.py#L479" id="node2" shape="rect" title=".add_api_route()"/>
-<area alt="" coords="198,153,378,201" href="https://github.com/encode/starlette/blob/6c556f6c5e4aa70173a84f6e6854390241231021/starlette/routing.py#L749" id="node3" shape="rect" title=".add_event_handler()"/>
-<area alt="" coords="403,153,475,201" href="https://www.uvicorn.org/deployment/#running-programmatically" id="node5" shape="rect" title=".run()"/>
-</map></section>
+}' class="graphviz" src="_images/graphviz-5f15f28e4c97bcf4a9117a084bf14ca698aab754.png" usemap="#methods1"/></div>
+<map id="methods1" name="methods1">
+<area alt="" coords="394,81,391,74,383,67,372,62,357,59,340,57,323,59,308,62,297,67,289,74,286,81,289,89,297,95,308,101,323,104,340,105,357,104,372,101,383,95,391,89" href="https://fastapi.tiangolo.com/" id="node1" shape="poly" title="FastAPI"/>
+<area alt="" coords="628,81,626,74,618,67,606,62,591,59,575,57,558,59,543,62,531,67,524,74,521,81,524,89,531,95,543,101,558,104,575,105,591,104,606,101,618,95,626,89" href="https://www.uvicorn.org/" id="node5" shape="poly" title="Uvicorn"/>
+</map><p>For more information on adding routes, routers, and events, see:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="reference/api.html#msdss_base_api.core.API.add_route" title="msdss_base_api.core.API.add_route"><code class="xref py py-meth docutils literal notranslate"><span class="pre">msdss_base_api.core.API.add_route()</span></code></a></p></li>
+<li><p><a class="reference internal" href="reference/api.html#msdss_base_api.core.API.add_router" title="msdss_base_api.core.API.add_router"><code class="xref py py-meth docutils literal notranslate"><span class="pre">msdss_base_api.core.API.add_router()</span></code></a></p></li>
+<li><p><a class="reference internal" href="reference/api.html#msdss_base_api.core.API.add_event" title="msdss_base_api.core.API.add_event"><code class="xref py py-meth docutils literal notranslate"><span class="pre">msdss_base_api.core.API.add_event()</span></code></a></p></li>
+</ul>
+</section>
+<section id="combining-routes-routers-and-events-across-apps">
+<h2 id="combining-routes-routers-and-events-across-apps">Combining Routes, Routers, and Events Across Apps<a class="headerlink" href="#combining-routes-routers-and-events-across-apps" title="Permalink to this headline">¶</a></h2>
+<p>When adding routes, routers, and events, the arguments are tracked in attributes <code class="docutils literal notranslate"><span class="pre">routes</span></code>, <code class="docutils literal notranslate"><span class="pre">routers</span></code>, and <code class="docutils literal notranslate"><span class="pre">events</span></code>, which are then
+used to combine routes, routers, and events from other app instances.</p>
+<div class="graphviz"><img alt='digraph methods2 {
+rankdir=TB;
+
+addevent[label=".add_event()" shape=rect style=rounded];
+addroute[label=".add_route()" shape=rect style=rounded];
+addrouter[label=".add_router()" shape=rect style=rounded];
+addapp[label=".add_apps()" shape=rect style=rounded];
+
+appevents[label=".add_app_events()" shape=rect style=rounded];
+approutes[label=".add_app_routes()" shape=rect style=rounded];
+approuters[label=".add_app_routers()" shape=rect style=rounded];
+
+eventattr[label=".events" shape=plain style=rounded];
+routeattr[label=".routes" shape=plain style=rounded];
+routerattr[label=".routers" shape=plain style=rounded];
+
+subgraph cluster {
+   label=&lt; &lt;B&gt;msdss-base-api.core.API (add_app_events/routes/routers)&lt;/B&gt; &gt;;
+   style=rounded;
+
+   addevent -&gt; eventattr -&gt; appevents -&gt; addapp;
+   addroute -&gt; routeattr -&gt; approutes -&gt; addapp;
+   addrouter -&gt; routerattr -&gt; approuters -&gt; addapp;
+}
+}' class="graphviz" src="_images/graphviz-d5b8b2a0fdad96f14cbb3a82cea321c13acdb8a2.png"/></div>
+<p>For more information on combining app routes, routers, and events, see:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="reference/api.html#msdss_base_api.core.API.add_apps" title="msdss_base_api.core.API.add_apps"><code class="xref py py-meth docutils literal notranslate"><span class="pre">msdss_base_api.core.API.add_apps()</span></code></a></p></li>
+<li><p><a class="reference internal" href="reference/api.html#msdss_base_api.core.API.add_app_events" title="msdss_base_api.core.API.add_app_events"><code class="xref py py-meth docutils literal notranslate"><span class="pre">msdss_base_api.core.API.add_app_events()</span></code></a></p></li>
+<li><p><a class="reference internal" href="reference/api.html#msdss_base_api.core.API.add_app_routes" title="msdss_base_api.core.API.add_app_routes"><code class="xref py py-meth docutils literal notranslate"><span class="pre">msdss_base_api.core.API.add_app_routes()</span></code></a></p></li>
+<li><p><a class="reference internal" href="reference/api.html#msdss_base_api.core.API.add_app_routers" title="msdss_base_api.core.API.add_app_routers"><code class="xref py py-meth docutils literal notranslate"><span class="pre">msdss_base_api.core.API.add_app_routers()</span></code></a></p></li>
+</ul>
+</section>
+</section>
 
 
           </article>
@@ -332,7 +407,7 @@ subgraph cluster {
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
           
-            <a href="quickstart.html" title="Quick Start"
+            <a href="usage.html" title="Usage"
                class="md-flex md-footer-nav__link md-footer-nav__link--prev"
                rel="prev">
               <div class="md-flex__cell md-flex__cell--shrink">
@@ -341,7 +416,7 @@ subgraph cluster {
               <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
                 <span class="md-flex__ellipsis">
                   <span
-                      class="md-footer-nav__direction"> Previous </span> Quick Start </span>
+                      class="md-footer-nav__direction"> Previous </span> Usage </span>
               </div>
             </a>
           
