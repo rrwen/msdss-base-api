@@ -128,7 +128,7 @@ Routes, routers, and events from other apps can be combined in a single app:
         print("startup 1!")
 
     @app2.event("startup")
-    def startup2():
+    async def startup2():
         print("startup 2!")
 
     @app3.event("shutdown")

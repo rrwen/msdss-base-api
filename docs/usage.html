@@ -447,7 +447,7 @@
     <span class="nb">print</span><span class="p">(</span><span class="s2">"startup 1!"</span><span class="p">)</span>
 
 <span class="nd">@app2</span><span class="o">.</span><span class="n">event</span><span class="p">(</span><span class="s2">"startup"</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">startup2</span><span class="p">():</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">startup2</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"startup 2!"</span><span class="p">)</span>
 
 <span class="nd">@app3</span><span class="o">.</span><span class="n">event</span><span class="p">(</span><span class="s2">"shutdown"</span><span class="p">)</span>
@@ -475,24 +475,24 @@
 <div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>app1 combined events:
 
 [{'event': 'startup',
-  'func': &lt;function API.add_app_events.&lt;locals&gt;.func at 0x7fbe8ae96af0&gt;},
+  'func': &lt;function API.add_app_events.&lt;locals&gt;.func at 0x7fce32e15af0&gt;},
  {'event': 'shutdown',
-  'func': &lt;function API.add_app_events.&lt;locals&gt;.func at 0x7fbe8ae96b80&gt;}]
+  'func': &lt;function API.add_app_events.&lt;locals&gt;.func at 0x7fce32e15b80&gt;}]
 
 app1 combined routes:
 
 [{'args': (),
-  'func': &lt;function hello_world1 at 0x7fbe8ae7e790&gt;,
+  'func': &lt;function hello_world1 at 0x7fce32dfd790&gt;,
   'kwargs': {},
   'method': 'GET',
   'path': '/start1'},
  {'args': (),
-  'func': &lt;function hello_world2 at 0x7fbe8ae7e940&gt;,
+  'func': &lt;function hello_world2 at 0x7fce32dfd940&gt;,
   'kwargs': {},
   'method': 'GET',
   'path': '/start2'},
  {'args': (),
-  'func': &lt;function hello_world3 at 0x7fbe8ae7eaf0&gt;,
+  'func': &lt;function hello_world3 at 0x7fce32dfdaf0&gt;,
   'kwargs': {},
   'method': 'GET',
   'path': '/start3'}]
@@ -501,13 +501,13 @@ app1 combined routers:
 
 [{'args': (),
   'kwargs': {'tags': ['helloworld1']},
-  'router': &lt;fastapi.routing.APIRouter object at 0x7fbe8aea4ca0&gt;},
+  'router': &lt;fastapi.routing.APIRouter object at 0x7fce32e24be0&gt;},
  {'args': (),
   'kwargs': {'tags': ['helloworld2']},
-  'router': &lt;fastapi.routing.APIRouter object at 0x7fbe8aea4be0&gt;},
+  'router': &lt;fastapi.routing.APIRouter object at 0x7fce32e24b20&gt;},
  {'args': (),
   'kwargs': {'tags': ['helloworld3']},
-  'router': &lt;fastapi.routing.APIRouter object at 0x7fbe8aea4dc0&gt;}]
+  'router': &lt;fastapi.routing.APIRouter object at 0x7fce32e24d00&gt;}]
 </pre></div>
 </div>
 </div>
