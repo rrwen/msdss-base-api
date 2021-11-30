@@ -47,7 +47,7 @@
   
   
   
-    <title>API &#8212; 0.1.0</title>
+    <title>API &#8212; 0.1.1</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/material.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -89,11 +89,11 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex navheader">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="../index.html" title="0.1.0"
+        <a href="../index.html" title="0.1.1"
            class="md-header-nav__button md-logo">
           
               <img src="../_static/logo.svg" height="26"
-                   alt="0.1.0 logo">
+                   alt="0.1.1 logo">
           
         </a>
       </div>
@@ -176,7 +176,7 @@
   <nav class="md-tabs" data-md-component="tabs">
     <div class="md-tabs__inner md-grid">
       <ul class="md-tabs__list">
-          <li class="md-tabs__item"><a href="../index.html" class="md-tabs__link">0.1.0</a></li>
+          <li class="md-tabs__item"><a href="../index.html" class="md-tabs__link">0.1.1</a></li>
           <li class="md-tabs__item"><a href="index.html" class="md-tabs__link">API Reference</a></li>
       </ul>
     </div>
@@ -189,13 +189,13 @@
               <div class="md-sidebar__inner">
                 <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="../index.html" title="0.1.0" class="md-nav__button md-logo">
+    <a href="../index.html" title="0.1.1" class="md-nav__button md-logo">
       
         <img src="../_static/logo.svg" alt=" logo" width="48" height="48">
       
     </a>
     <a href="../index.html"
-       title="0.1.0">msdss-base-api</a>
+       title="0.1.1">msdss-base-api</a>
   </label>
     <div class="md-nav__source">
       <a href="https://github.com/rrwen/msdss-base-api/" title="Go to repository" class="md-source" data-md-source="github">
@@ -528,24 +528,24 @@
 <div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>app1 combined events:
 
 [{'event': 'startup',
-  'func': &lt;function API.add_app_events.&lt;locals&gt;.func at 0x7fc0e9f63e50&gt;},
+  'func': &lt;function API.add_app_events.&lt;locals&gt;.func at 0x7fbeb96af5e0&gt;},
  {'event': 'shutdown',
-  'func': &lt;function API.add_app_events.&lt;locals&gt;.func at 0x7fc0e9f63ee0&gt;}]
+  'func': &lt;function API.add_app_events.&lt;locals&gt;.func at 0x7fbeb96af670&gt;}]
 
 app1 combined routes:
 
 [{'args': (),
-  'func': &lt;function hello_world1 at 0x7fc0e9f4daf0&gt;,
+  'func': &lt;function hello_world1 at 0x7fbeb96973a0&gt;,
   'kwargs': {},
   'method': 'GET',
   'path': '/start1'},
  {'args': (),
-  'func': &lt;function hello_world2 at 0x7fc0e9f4dca0&gt;,
+  'func': &lt;function hello_world2 at 0x7fbeb9697550&gt;,
   'kwargs': {},
   'method': 'GET',
   'path': '/start2'},
  {'args': (),
-  'func': &lt;function hello_world3 at 0x7fc0e9f4de50&gt;,
+  'func': &lt;function hello_world3 at 0x7fbeb9697700&gt;,
   'kwargs': {},
   'method': 'GET',
   'path': '/start3'}]
@@ -554,13 +554,13 @@ app1 combined routers:
 
 [{'args': (),
   'kwargs': {'tags': ['helloworld1']},
-  'router': &lt;fastapi.routing.APIRouter object at 0x7fc0e9f55070&gt;},
+  'router': &lt;fastapi.routing.APIRouter object at 0x7fbeb96b6400&gt;},
  {'args': (),
   'kwargs': {'tags': ['helloworld2']},
-  'router': &lt;fastapi.routing.APIRouter object at 0x7fc0e9f75f70&gt;},
+  'router': &lt;fastapi.routing.APIRouter object at 0x7fbeb96b6370&gt;},
  {'args': (),
   'kwargs': {'tags': ['helloworld3']},
-  'router': &lt;fastapi.routing.APIRouter object at 0x7fc0e9f550a0&gt;}]
+  'router': &lt;fastapi.routing.APIRouter object at 0x7fbeb96b6520&gt;}]
 </pre></div>
 </div>
 </div>
@@ -602,7 +602,7 @@ app1 combined routers:
     <span class="nb">print</span><span class="p">(</span><span class="s2">"startup 1!"</span><span class="p">)</span>
 
 <span class="nd">@app2</span><span class="o">.</span><span class="n">event</span><span class="p">(</span><span class="s2">"startup"</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">startup2</span><span class="p">():</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">startup2</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"startup 2!"</span><span class="p">)</span>
 
 <span class="nd">@app3</span><span class="o">.</span><span class="n">event</span><span class="p">(</span><span class="s2">"shutdown"</span><span class="p">)</span>
@@ -628,12 +628,12 @@ app1 combined routers:
 <div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>app1 startup event combined with app2 startup event:
 
 {'event': 'startup',
- 'func': &lt;function API.add_app_events.&lt;locals&gt;.func at 0x7fc0e9f77040&gt;}
+ 'func': &lt;function API.add_app_events.&lt;locals&gt;.func at 0x7fbeb96af820&gt;}
 
 app3 shutdown event added to app1:
 
 {'event': 'shutdown',
- 'func': &lt;function API.add_app_events.&lt;locals&gt;.func at 0x7fc0e9f77280&gt;}
+ 'func': &lt;function API.add_app_events.&lt;locals&gt;.func at 0x7fbeb86a5e50&gt;}
 </pre></div>
 </div>
 </div>
@@ -698,7 +698,7 @@ app3 shutdown event added to app1:
 <div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>app1 route:
 
 {'args': (),
- 'func': &lt;function hello_world1 at 0x7fc0e9f77dc0&gt;,
+ 'func': &lt;function hello_world1 at 0x7fbeb96afc10&gt;,
  'kwargs': {},
  'method': 'GET',
  'path': '/start1'}
@@ -706,7 +706,7 @@ app3 shutdown event added to app1:
 app2 route added to app1:
 
 {'args': (),
- 'func': &lt;function hello_world2 at 0x7fc0e9f77c10&gt;,
+ 'func': &lt;function hello_world2 at 0x7fbeb96afaf0&gt;,
  'kwargs': {},
  'method': 'GET',
  'path': '/start2'}
@@ -714,7 +714,7 @@ app2 route added to app1:
 app3 route added to app1:
 
 {'args': (),
- 'func': &lt;function hello_world3 at 0x7fc0e9f77a60&gt;,
+ 'func': &lt;function hello_world3 at 0x7fbeb96c6040&gt;,
  'kwargs': {},
  'method': 'GET',
  'path': '/start3'}
@@ -799,19 +799,19 @@ app3 route added to app1:
 
 {'args': (),
  'kwargs': {'tags': ['helloworld1']},
- 'router': &lt;fastapi.routing.APIRouter object at 0x7fc0d8174040&gt;}
+ 'router': &lt;fastapi.routing.APIRouter object at 0x7fbeb9695c10&gt;}
 
 app2 router added to app1:
 
 {'args': (),
  'kwargs': {'tags': ['helloworld2']},
- 'router': &lt;fastapi.routing.APIRouter object at 0x7fc0e9f49f10&gt;}
+ 'router': &lt;fastapi.routing.APIRouter object at 0x7fbeb9695370&gt;}
 
 app3 router added to app1:
 
 {'args': (),
  'kwargs': {'tags': ['helloworld3']},
- 'router': &lt;fastapi.routing.APIRouter object at 0x7fc0e9f76ca0&gt;}
+ 'router': &lt;fastapi.routing.APIRouter object at 0x7fbeb96d0100&gt;}
 </pre></div>
 </div>
 </div>
@@ -865,11 +865,11 @@ app3 router added to app1:
 <div class="cell_output docutils container">
 <div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>startup
 
-{'event': 'startup', 'func': &lt;function before_startup at 0x7fc0d81dfee0&gt;}
+{'event': 'startup', 'func': &lt;function before_startup at 0x7fbeb96c6790&gt;}
 
 shutdown
 
-{'event': 'shutdown', 'func': &lt;function during_shutdown at 0x7fc0d81dfaf0&gt;}
+{'event': 'shutdown', 'func': &lt;function during_shutdown at 0x7fbeb96c6820&gt;}
 </pre></div>
 </div>
 </div>
@@ -914,7 +914,7 @@ shutdown
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>{'args': (),
- 'func': &lt;function hello_world at 0x7fc0d81df9d0&gt;,
+ 'func': &lt;function hello_world at 0x7fbeb96c6430&gt;,
  'kwargs': {},
  'method': 'GET',
  'path': '/'}
@@ -975,7 +975,7 @@ shutdown
 <div class="cell_output docutils container">
 <div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>{'args': (),
  'kwargs': {'tags': ['helloworld']},
- 'router': &lt;fastapi.routing.APIRouter object at 0x7fc0d81d9c10&gt;}
+ 'router': &lt;fastapi.routing.APIRouter object at 0x7fbeb96c5ee0&gt;}
 </pre></div>
 </div>
 </div>
@@ -1181,7 +1181,7 @@ shutdown
               
           </div>
             Created using
-            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.3.0.
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.3.1.
              and
             <a href="https://github.com/bashtage/sphinx-material/">Material for
               Sphinx</a>

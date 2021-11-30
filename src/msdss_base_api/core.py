@@ -1,3 +1,4 @@
+import inspect
 import logging
 import uvicorn
 
@@ -75,7 +76,7 @@ class API:
         # API is hosted at http://localhost:8000
         # app.start()
     """
-    def __init__(self, api=FastAPI(title='MSDSS Base API', version='0.1.0'), logger=logging.getLogger('uvicorn.error')):
+    def __init__(self, api=FastAPI(title='MSDSS Base API', version='0.1.1'), logger=logging.getLogger('uvicorn.error')):
         self.api = api
         self.logger = logger
         self.routes = []
@@ -230,7 +231,7 @@ class API:
                 print("startup 1!")
 
             @app2.event("startup")
-            def startup2():
+            async def startup2():
                 print("startup 2!")
 
             @app3.event("shutdown")
@@ -267,9 +268,12 @@ class API:
         # (API_add_app_events_replace) Replace event functions based on event type
         self.events = []
         for event, func_list in event_funcs.items():
-            def func():
+            async def func():
                 for run in func_list:
-                    run()
+                    if inspect.iscoroutinefunction(run):
+                        await run()
+                    else:
+                        run()
             self.add_event(event=event, func=func)
     add_app_event = add_app_events
 
