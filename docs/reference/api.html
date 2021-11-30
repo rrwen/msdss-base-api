@@ -47,7 +47,7 @@
   
   
   
-    <title>API &#8212; 0.1.1</title>
+    <title>API &#8212; 0.1.2</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/material.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -89,11 +89,11 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex navheader">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="../index.html" title="0.1.1"
+        <a href="../index.html" title="0.1.2"
            class="md-header-nav__button md-logo">
           
               <img src="../_static/logo.svg" height="26"
-                   alt="0.1.1 logo">
+                   alt="0.1.2 logo">
           
         </a>
       </div>
@@ -176,7 +176,7 @@
   <nav class="md-tabs" data-md-component="tabs">
     <div class="md-tabs__inner md-grid">
       <ul class="md-tabs__list">
-          <li class="md-tabs__item"><a href="../index.html" class="md-tabs__link">0.1.1</a></li>
+          <li class="md-tabs__item"><a href="../index.html" class="md-tabs__link">0.1.2</a></li>
           <li class="md-tabs__item"><a href="index.html" class="md-tabs__link">API Reference</a></li>
       </ul>
     </div>
@@ -189,13 +189,13 @@
               <div class="md-sidebar__inner">
                 <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="../index.html" title="0.1.1" class="md-nav__button md-logo">
+    <a href="../index.html" title="0.1.2" class="md-nav__button md-logo">
       
         <img src="../_static/logo.svg" alt=" logo" width="48" height="48">
       
     </a>
     <a href="../index.html"
-       title="0.1.1">msdss-base-api</a>
+       title="0.1.2">msdss-base-api</a>
   </label>
     <div class="md-nav__source">
       <a href="https://github.com/rrwen/msdss-base-api/" title="Go to repository" class="md-source" data-md-source="github">
@@ -527,25 +527,24 @@
 <div class="cell_output docutils container">
 <div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>app1 combined events:
 
-[{'event': 'startup',
-  'func': &lt;function API.add_app_events.&lt;locals&gt;.func at 0x7fbeb96af5e0&gt;},
- {'event': 'shutdown',
-  'func': &lt;function API.add_app_events.&lt;locals&gt;.func at 0x7fbeb96af670&gt;}]
+[{'event': 'startup', 'func': &lt;function startup1 at 0x7fedc8680ee0&gt;},
+ {'event': 'startup', 'func': &lt;function startup2 at 0x7fedc8680f70&gt;},
+ {'event': 'shutdown', 'func': &lt;function shutdown at 0x7fedc869b040&gt;}]
 
 app1 combined routes:
 
 [{'args': (),
-  'func': &lt;function hello_world1 at 0x7fbeb96973a0&gt;,
+  'func': &lt;function hello_world1 at 0x7fedc86803a0&gt;,
   'kwargs': {},
   'method': 'GET',
   'path': '/start1'},
  {'args': (),
-  'func': &lt;function hello_world2 at 0x7fbeb9697550&gt;,
+  'func': &lt;function hello_world2 at 0x7fedc8680550&gt;,
   'kwargs': {},
   'method': 'GET',
   'path': '/start2'},
  {'args': (),
-  'func': &lt;function hello_world3 at 0x7fbeb9697700&gt;,
+  'func': &lt;function hello_world3 at 0x7fedc8680310&gt;,
   'kwargs': {},
   'method': 'GET',
   'path': '/start3'}]
@@ -554,13 +553,13 @@ app1 combined routers:
 
 [{'args': (),
   'kwargs': {'tags': ['helloworld1']},
-  'router': &lt;fastapi.routing.APIRouter object at 0x7fbeb96b6400&gt;},
+  'router': &lt;fastapi.routing.APIRouter object at 0x7fedc869f4c0&gt;},
  {'args': (),
   'kwargs': {'tags': ['helloworld2']},
-  'router': &lt;fastapi.routing.APIRouter object at 0x7fbeb96b6370&gt;},
+  'router': &lt;fastapi.routing.APIRouter object at 0x7fedc869f430&gt;},
  {'args': (),
   'kwargs': {'tags': ['helloworld3']},
-  'router': &lt;fastapi.routing.APIRouter object at 0x7fbeb96b6520&gt;}]
+  'router': &lt;fastapi.routing.APIRouter object at 0x7fedc869f5e0&gt;}]
 </pre></div>
 </div>
 </div>
@@ -572,12 +571,7 @@ app1 combined routers:
 <dl class="py method">
 <dt class="sig sig-object py" id="msdss_base_api.core.API.add_app_events">
 <span class="sig-prename descclassname"><span class="pre">API.</span></span><span class="sig-name descname"><span class="pre">add_app_events</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">apps</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/msdss_base_api/core.html#API.add_app_events"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#msdss_base_api.core.API.add_app_events" title="Permalink to this definition">¶</a></dt>
-<dd><p>Combines event functions from several apps to the API via <a class="reference internal" href="#msdss_base_api.core.API.add_event" title="msdss_base_api.core.API.add_event"><code class="xref py py-meth docutils literal notranslate"><span class="pre">msdss_base_api.core.API.add_event()</span></code></a>.</p>
-<ul class="simple">
-<li><p>Each event <code class="docutils literal notranslate"><span class="pre">func</span></code> will be run one after another and added based on <code class="docutils literal notranslate"><span class="pre">event</span></code> type</p></li>
-<li><p>For example, all <code class="docutils literal notranslate"><span class="pre">startup</span></code> event functions from all apps will be collected into a single function and added as a single event function, which runs each function one after another</p></li>
-<li><p>The result is one function for each event type</p></li>
-</ul>
+<dd><p>Combines event functions from several apps to the API via <a class="reference internal" href="#msdss_base_api.core.API.add_event" title="msdss_base_api.core.API.add_event"><code class="xref py py-meth docutils literal notranslate"><span class="pre">msdss_base_api.core.API.add_event()</span></code></a> using the <code class="docutils literal notranslate"><span class="pre">events</span></code> attribute.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>*apps</strong> (<a class="reference internal" href="#msdss_base_api.core.API" title="msdss_base_api.core.API"><code class="xref py py-class docutils literal notranslate"><span class="pre">msdss_base_api.core.API</span></code></a>) – Apps to add events from.</p>
@@ -627,13 +621,11 @@ app1 combined routers:
 <div class="cell_output docutils container">
 <div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>app1 startup event combined with app2 startup event:
 
-{'event': 'startup',
- 'func': &lt;function API.add_app_events.&lt;locals&gt;.func at 0x7fbeb96af820&gt;}
+{'event': 'startup', 'func': &lt;function startup1 at 0x7fedc869bee0&gt;}
 
 app3 shutdown event added to app1:
 
-{'event': 'shutdown',
- 'func': &lt;function API.add_app_events.&lt;locals&gt;.func at 0x7fbeb86a5e50&gt;}
+{'event': 'startup', 'func': &lt;function startup2 at 0x7fedc869bf70&gt;}
 </pre></div>
 </div>
 </div>
@@ -698,7 +690,7 @@ app3 shutdown event added to app1:
 <div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>app1 route:
 
 {'args': (),
- 'func': &lt;function hello_world1 at 0x7fbeb96afc10&gt;,
+ 'func': &lt;function hello_world1 at 0x7fedc869b9d0&gt;,
  'kwargs': {},
  'method': 'GET',
  'path': '/start1'}
@@ -706,7 +698,7 @@ app3 shutdown event added to app1:
 app2 route added to app1:
 
 {'args': (),
- 'func': &lt;function hello_world2 at 0x7fbeb96afaf0&gt;,
+ 'func': &lt;function hello_world2 at 0x7fedc869bc10&gt;,
  'kwargs': {},
  'method': 'GET',
  'path': '/start2'}
@@ -714,7 +706,7 @@ app2 route added to app1:
 app3 route added to app1:
 
 {'args': (),
- 'func': &lt;function hello_world3 at 0x7fbeb96c6040&gt;,
+ 'func': &lt;function hello_world3 at 0x7fedc869bd30&gt;,
  'kwargs': {},
  'method': 'GET',
  'path': '/start3'}
@@ -799,19 +791,19 @@ app3 route added to app1:
 
 {'args': (),
  'kwargs': {'tags': ['helloworld1']},
- 'router': &lt;fastapi.routing.APIRouter object at 0x7fbeb9695c10&gt;}
+ 'router': &lt;fastapi.routing.APIRouter object at 0x7fedc867e580&gt;}
 
 app2 router added to app1:
 
 {'args': (),
  'kwargs': {'tags': ['helloworld2']},
- 'router': &lt;fastapi.routing.APIRouter object at 0x7fbeb9695370&gt;}
+ 'router': &lt;fastapi.routing.APIRouter object at 0x7fedc867ef10&gt;}
 
 app3 router added to app1:
 
 {'args': (),
  'kwargs': {'tags': ['helloworld3']},
- 'router': &lt;fastapi.routing.APIRouter object at 0x7fbeb96d0100&gt;}
+ 'router': &lt;fastapi.routing.APIRouter object at 0x7fedc86a2220&gt;}
 </pre></div>
 </div>
 </div>
@@ -865,11 +857,11 @@ app3 router added to app1:
 <div class="cell_output docutils container">
 <div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>startup
 
-{'event': 'startup', 'func': &lt;function before_startup at 0x7fbeb96c6790&gt;}
+{'event': 'startup', 'func': &lt;function before_startup at 0x7fedc86b6f70&gt;}
 
 shutdown
 
-{'event': 'shutdown', 'func': &lt;function during_shutdown at 0x7fbeb96c6820&gt;}
+{'event': 'shutdown', 'func': &lt;function during_shutdown at 0x7fedc86b6ee0&gt;}
 </pre></div>
 </div>
 </div>
@@ -914,7 +906,7 @@ shutdown
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>{'args': (),
- 'func': &lt;function hello_world at 0x7fbeb96c6430&gt;,
+ 'func': &lt;function hello_world at 0x7fedc867bdc0&gt;,
  'kwargs': {},
  'method': 'GET',
  'path': '/'}
@@ -975,7 +967,7 @@ shutdown
 <div class="cell_output docutils container">
 <div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>{'args': (),
  'kwargs': {'tags': ['helloworld']},
- 'router': &lt;fastapi.routing.APIRouter object at 0x7fbeb96c5ee0&gt;}
+ 'router': &lt;fastapi.routing.APIRouter object at 0x7fedc86a4850&gt;}
 </pre></div>
 </div>
 </div>

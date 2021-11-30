@@ -27,7 +27,7 @@ author = 'Richard Wen rrwen.dev@gmail.com'
 project = 'msdss_base_api'
 description = 'Base API for the Modular Spatial Decision Support Systems (MSDSS) framework'
 copyright = str(datetime.now().year) + ', ' + 'Richard Wen'
-version = '0.1.1'
+version = '0.1.2'
 release = version
 
 # -- General configuration ------------------------------------------------

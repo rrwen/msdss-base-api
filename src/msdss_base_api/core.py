@@ -76,7 +76,7 @@ class API:
         # API is hosted at http://localhost:8000
         # app.start()
     """
-    def __init__(self, api=FastAPI(title='MSDSS Base API', version='0.1.1'), logger=logging.getLogger('uvicorn.error')):
+    def __init__(self, api=FastAPI(title='MSDSS Base API', version='0.1.2'), logger=logging.getLogger('uvicorn.error')):
         self.api = api
         self.logger = logger
         self.routes = []
@@ -198,11 +198,7 @@ class API:
 
     def add_app_events(self, *apps):
         """
-        Combines event functions from several apps to the API via :meth:`msdss_base_api.core.API.add_event`.
-
-        * Each event ``func`` will be run one after another and added based on ``event`` type
-        * For example, all ``startup`` event functions from all apps will be collected into a single function and added as a single event function, which runs each function one after another
-        * The result is one function for each event type
+        Combines event functions from several apps to the API via :meth:`msdss_base_api.core.API.add_event` using the ``events`` attribute.
 
         Parameters
         ----------
@@ -251,30 +247,10 @@ class API:
             # API is hosted at http://localhost:8000
             # app1.start()
         """
-
-        # (API_add_app_events_collect) Collects event functions from all apps
-        event_funcs = {}
         apps = list(apps)
-        apps.append(self)
         for a in apps:
-            for e in a.events:
-                event = e['event']
-                func = e['func']
-                if event not in event_funcs:
-                    event_funcs[event] = []
-                else:
-                    event_funcs[event].append(func)
-        
-        # (API_add_app_events_replace) Replace event functions based on event type
-        self.events = []
-        for event, func_list in event_funcs.items():
-            async def func():
-                for run in func_list:
-                    if inspect.iscoroutinefunction(run):
-                        await run()
-                    else:
-                        run()
-            self.add_event(event=event, func=func)
+            for kwargs in a.events:
+                self.add_event(**kwargs)
     add_app_event = add_app_events
 
     def add_app_routes(self, *apps):

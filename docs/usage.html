@@ -47,7 +47,7 @@
   
   
   
-    <title>Usage &#8212; 0.1.1</title>
+    <title>Usage &#8212; 0.1.2</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/material.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -90,11 +90,11 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex navheader">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="index.html" title="0.1.1"
+        <a href="index.html" title="0.1.2"
            class="md-header-nav__button md-logo">
           
               <img src="_static/logo.svg" height="26"
-                   alt="0.1.1 logo">
+                   alt="0.1.2 logo">
           
         </a>
       </div>
@@ -177,7 +177,7 @@
   <nav class="md-tabs" data-md-component="tabs">
     <div class="md-tabs__inner md-grid">
       <ul class="md-tabs__list">
-          <li class="md-tabs__item"><a href="index.html" class="md-tabs__link">0.1.1</a></li>
+          <li class="md-tabs__item"><a href="index.html" class="md-tabs__link">0.1.2</a></li>
       </ul>
     </div>
   </nav>
@@ -189,13 +189,13 @@
               <div class="md-sidebar__inner">
                 <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="index.html" title="0.1.1" class="md-nav__button md-logo">
+    <a href="index.html" title="0.1.2" class="md-nav__button md-logo">
       
         <img src="_static/logo.svg" alt=" logo" width="48" height="48">
       
     </a>
     <a href="index.html"
-       title="0.1.1">msdss-base-api</a>
+       title="0.1.2">msdss-base-api</a>
   </label>
     <div class="md-nav__source">
       <a href="https://github.com/rrwen/msdss-base-api/" title="Go to repository" class="md-source" data-md-source="github">
@@ -474,25 +474,24 @@
 <div class="cell_output docutils container">
 <div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>app1 combined events:
 
-[{'event': 'startup',
-  'func': &lt;function API.add_app_events.&lt;locals&gt;.func at 0x7fce32e15af0&gt;},
- {'event': 'shutdown',
-  'func': &lt;function API.add_app_events.&lt;locals&gt;.func at 0x7fce32e15b80&gt;}]
+[{'event': 'startup', 'func': &lt;function startup1 at 0x7f95207d0430&gt;},
+ {'event': 'startup', 'func': &lt;function startup2 at 0x7f95207d04c0&gt;},
+ {'event': 'shutdown', 'func': &lt;function shutdown at 0x7f95207d0550&gt;}]
 
 app1 combined routes:
 
 [{'args': (),
-  'func': &lt;function hello_world1 at 0x7fce32dfd790&gt;,
+  'func': &lt;function hello_world1 at 0x7f95207bc790&gt;,
   'kwargs': {},
   'method': 'GET',
   'path': '/start1'},
  {'args': (),
-  'func': &lt;function hello_world2 at 0x7fce32dfd940&gt;,
+  'func': &lt;function hello_world2 at 0x7f95207bc940&gt;,
   'kwargs': {},
   'method': 'GET',
   'path': '/start2'},
  {'args': (),
-  'func': &lt;function hello_world3 at 0x7fce32dfdaf0&gt;,
+  'func': &lt;function hello_world3 at 0x7f95207bcaf0&gt;,
   'kwargs': {},
   'method': 'GET',
   'path': '/start3'}]
@@ -501,13 +500,13 @@ app1 combined routers:
 
 [{'args': (),
   'kwargs': {'tags': ['helloworld1']},
-  'router': &lt;fastapi.routing.APIRouter object at 0x7fce32e24be0&gt;},
+  'router': &lt;fastapi.routing.APIRouter object at 0x7f951f740df0&gt;},
  {'args': (),
   'kwargs': {'tags': ['helloworld2']},
-  'router': &lt;fastapi.routing.APIRouter object at 0x7fce32e24b20&gt;},
+  'router': &lt;fastapi.routing.APIRouter object at 0x7f95207debe0&gt;},
  {'args': (),
   'kwargs': {'tags': ['helloworld3']},
-  'router': &lt;fastapi.routing.APIRouter object at 0x7fce32e24d00&gt;}]
+  'router': &lt;fastapi.routing.APIRouter object at 0x7f951f5e9d60&gt;}]
 </pre></div>
 </div>
 </div>
